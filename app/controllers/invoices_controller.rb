@@ -9,11 +9,17 @@ class InvoicesController < ApplicationController
 
   # TODO create a new Invoice (new/create). After create redirect to index.
   def new
-
+    @invoice = Invoice.new
   end
 
   def create
-    redirect_to dashboard_path
+    @invoice = Invoice.new(invoice_params)
+
+    if @invoice.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   # TODO show a specific Invoice. link_to back, edit
@@ -39,13 +45,13 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    @invoice = current_user.freelancer.invoices.find(params[:id])
+    @invoice = current_user.invoices.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  # def invoice_params
-  #   # to set params, think about nested forms (need freelancer and client attributes!)
-  #   params.require(:invoice).permit()
-  # end
+  def invoice_params
+    # to set params, think about nested forms (need description and client attributes!)
+    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms)
+  end
 
 end
