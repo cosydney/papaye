@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815152245) do
+ActiveRecord::Schema.define(version: 20160815154603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 20160815152245) do
 
   add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
 
+  create_table "descriptions", force: :cascade do |t|
+    t.integer  "invoice_id"
+    t.text     "description"
+    t.string   "unit"
+    t.float    "price"
+    t.float    "amount"
+    t.float    "vat_tax"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "descriptions", ["invoice_id"], name: "index_descriptions_on_invoice_id", using: :btree
+
   create_table "freelancers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -45,6 +58,20 @@ ActiveRecord::Schema.define(version: 20160815152245) do
   end
 
   add_index "freelancers", ["user_id"], name: "index_freelancers_on_user_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "freelancer_id"
+    t.integer  "client_id"
+    t.date     "invoice_date"
+    t.date     "due_date"
+    t.integer  "invoice_nr"
+    t.string   "invoice_terms"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "invoices", ["client_id"], name: "index_invoices_on_client_id", using: :btree
+  add_index "invoices", ["freelancer_id"], name: "index_invoices_on_freelancer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -65,5 +92,8 @@ ActiveRecord::Schema.define(version: 20160815152245) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "clients", "users"
+  add_foreign_key "descriptions", "invoices"
   add_foreign_key "freelancers", "users"
+  add_foreign_key "invoices", "clients"
+  add_foreign_key "invoices", "freelancers"
 end
