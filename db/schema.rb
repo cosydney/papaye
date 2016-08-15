@@ -29,6 +29,23 @@ ActiveRecord::Schema.define(version: 20160815152245) do
 
   add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
 
+  create_table "freelancers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company_name"
+    t.text     "address"
+    t.text     "company_nr"
+    t.integer  "vat"
+    t.string   "iban"
+    t.integer  "bank_nr"
+    t.integer  "branch_nr"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "freelancers", ["user_id"], name: "index_freelancers_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -48,4 +65,5 @@ ActiveRecord::Schema.define(version: 20160815152245) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "clients", "users"
+  add_foreign_key "freelancers", "users"
 end
