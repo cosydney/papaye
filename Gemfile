@@ -24,8 +24,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-  
-  
+  gem 'figaro'
+
 end
 
 gem 'rails_12factor', group: :production
