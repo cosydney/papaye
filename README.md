@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Open-source project build during lewagon august 2016 to help freelancers get paid on time - TBC
+
+Lina, Joao and Sydney initiated the project
