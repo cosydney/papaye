@@ -1,2 +1,12 @@
 <h1>Edit</h1>
-<p>here comes the form to edit (maybe same one as new and then only one view?)</p>
+
+<%= simple_form_for @invoice do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :invoice_nr %>
+  <%= f.input :invoice_date %>
+  <%= f.input :due_date %>
+  <%= f.input :invoice_terms %>
+  <%= f.button :submit %>
+<% end %>
+
