@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  # before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
