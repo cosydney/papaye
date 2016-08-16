@@ -1,0 +1,26 @@
+
+<%= simple_form_for current_user.freelancer,url: '/freelancer'  do |f|%>
+
+<%= f.error_notification %>
+
+<div class="form-inputs">
+<h2>Your details</h2>
+   <%= f.input :first_name, placeholder: "Enter your first name: " %>
+    <%= f.input :last_name, placeholder:"Enter your last name: " %>
+<h2>Your company details</h2>
+  <%= f.input :company_name, placeholder:"Company name" %>
+  <%= f.input :address, placeholder:"Company address" %>
+  <%= f.input :company_nr, placeholder:"Company registration number" %>
+  <%= f.input :vat, placeholder:"VAT Number" %>
+<h2>Bank details</h2>
+  <%= f.input :iban, placeholder: "IBAN" %>
+  <%= f.input :bank_nr, placeholder: "Bank Number" %>
+  <%= f.input :branch_nr, placeholder: "Branch Number (sort code)" %>
+  </div>
+  <div class="form-actions">
+  <%= f.button :submit, "Save", class: "btn btn-invictus" %>
+
+  </div>
+
+
+<% end %>

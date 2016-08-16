@@ -1,0 +1,94 @@
+/* Profile container */
+
+#sidebar {
+  position: fixed;
+  padding: 0;
+  height: 100%;
+  background-color: $translucent-darkest-blue;
+  color: #fff;
+  padding-top: 40px;
+}
+
+.profile {
+  margin: 20px 0;
+}
+
+.user-city{
+  font-size: 13px;
+  font-weight: 600;
+}
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+}
+
+.profile-userpic img {
+  width: 70px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: $orange;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+
+.profile-usermenu {
+  margin-top: 30px;
+  padding: 0;
+}
+
+.profile-usermenu-item  {
+  list-style: none;
+  line-height: 2.5em;
+  display: block;
+}
+
+.profile-usermenu-item a {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #fff;
+  display: block;
+  border-left: 2px solid transparent;
+  font-size: 0.9em;
+  transition: 0.5s ease;
+}
+
+.profile-usermenu-item a:hover, .profile-usermenu-item a:active {
+  background-color: darken($translucent-darkest-blue, 1%);
+  text-decoration: none;
+  border-left: 2px solid $orange;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  min-height: 460px;
+}
+
+// Signout button
+
+.sidebar-signout-btn {
+  text-align: center;
+  display: inline-block;
+  padding: 0 20px;
+  border: none;
+  border-radius: 20em;
+  line-height: 40px;
+  min-width: 100px;
+  background-color: $dark-blue;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: $orange;
+  }
+}
