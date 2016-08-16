@@ -9,6 +9,9 @@
   align-items: center;
   justify-content: center;
   font-family: 'Source Sans Pro', sans-serif;
+    h {
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
     h1 {
       font-size: 3.8rem;
       text-align: center;
@@ -25,12 +28,27 @@
     }
 }
 .card {
-  margin: 80px 10px;
+  padding: 10px 10px;
   border-radius: 4px;
   background-color: #BEBFC2;
-  height: 280px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  height: 250px;
+  box-shadow: 2px 2px 3px 0px rgb(225,225,225);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
   background-size: cover !important;
+  text-align: center;
   color: white;
   position: relative;
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+}
+.tree-box-margin{
+  margin: 80px 10px;
+}
+.two-box-margin{
+  margin: 0 10px 30px 10px;
+}
+.one-box-margin{
+  margin: 50px 10px 80px 10px;
 }
