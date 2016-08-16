@@ -1,10 +1,11 @@
-class InvoicesController < ApplicationController
+class Account::InvoicesController < ApplicationController
 
-  # before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:new, :create, :edit, :update]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
-    @invoices = Invoice.all
+    @invoices = current_user.freelancer.invoices
   end
 
   # TODO create a new Invoice (new/create). After create redirect to index.
@@ -24,17 +25,13 @@ class InvoicesController < ApplicationController
 
   # TODO show a specific Invoice. link_to back, edit
   def show
-    @invoice = Invoice.find(params[:id])
   end
 
   # TODO edit an already existing Invoice (edit/update). Afterward redirect to index
   def edit
-    @invoice = Invoice.find(params[:id])
   end
 
   def update
-    @invoice = Invoice.find(params[:id])
-
     if @invoice.update(invoice_params)
       redirect_to dashboard_path
     else
@@ -49,6 +46,17 @@ class InvoicesController < ApplicationController
 
 
   private
+
+  def is_freelancer?
+    # returns an array, if is empty, there is no freelancer
+    freelancer = Freelancer.where(user_id: current_user.id)
+    #reverse logic, if empty = true, then !freelancer
+    !(freelancer.empty?)
+  end
+
+  def authorize
+    redirect_to dashboard_path, alert: "You don't have the rights" unless is_freelancer
+  end
 
   def set_invoice
     @invoice = current_user.invoices.find(params[:id])
