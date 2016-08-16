@@ -9,10 +9,12 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
 </head>
 <body>
+  <!-- If navbar is set to top we display the one on top -->
   <% if @navbar == :top %>
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
   <%= yield %>
+<!--  -->
   <% else %>
   <!-- navbar = left -->
 
@@ -23,8 +25,10 @@
           <%= render 'shared/sidebar' %>
       </div>
       <div class="col-sm-10 col-lg-10">
+      <div class="dashboard-wrapper">
         <%= render 'shared/flashes' %>
         <%= yield %>
+        </div>
       </div>
     </div>
   </div>
