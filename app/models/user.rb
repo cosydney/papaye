@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :freelancer
   has_one :client
-  after_create :my_create_freelancer, unless :is_client # add if statement for client
+  after_create :my_create_freelancer # unless :is_client # add if statement for client
+
 
   def my_create_freelancer
     if virtual_data.nil?
@@ -44,13 +45,11 @@ class User < ActiveRecord::Base
     false
     # here we should say if the user created is a client
   end
-
 end
 
 
-# user
-# type 'freelance'/'client'
 
-# invoice
-# belongs_to 'freelance', class_name :user
-# belongs_to 'client', class_name :user
+
+
+
+
