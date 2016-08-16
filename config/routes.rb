@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   resources :invoices, except: :index
 
+  resources :pages
+
 end
