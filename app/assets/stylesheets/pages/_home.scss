@@ -1,4 +1,36 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.banner {
+  background: center no-repeat;
+  background-size: cover !important;
+  position: relative;
+  color: black;
+  text-align: center;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Source Sans Pro', sans-serif;
+    h1 {
+      font-size: 3.8rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+    a {
+     text-decoration: none;
+    }
+}
+.banner .banner-content .tutorial {
+  margin: 30px 0;
+    a {
+      margin-top: 15px;
+    }
+}
+.card {
+  margin: 80px 10px;
+  border-radius: 4px;
+  background-color: #BEBFC2;
+  height: 280px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white;
+  position: relative;
+}
