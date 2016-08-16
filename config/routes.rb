@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'clients/edit'
+
+  get 'clients/update'
+
+  get 'clients/new'
+
+  get 'clients/create'
+
+  get 'clients/destroy'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
