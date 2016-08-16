@@ -1,4 +1,4 @@
-<h1>Hi @freelancer name</h1>
+<h1>Hi @client name</h1>
 
 <% @invoices.each do |invoice| %>
   <p> Invoice Nr.: <%= invoice.invoice_date %></p>
@@ -6,5 +6,5 @@
   <%= link_to "Show", invoice_path(invoice) %>
 <% end %>
 <br>
-<%= link_to "Create Invoice", new_invoice_path %>
+
 

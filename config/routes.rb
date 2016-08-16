@@ -12,15 +12,15 @@ Rails.application.routes.draw do
 
   # After login re direct to / (invoices#index), with a prefix 'dashboard'
   authenticated :user do
-    root to: 'account/invoices#index', as: :dashboard
+    root to: 'invoices#index', as: :dashboard
   end
 
   root to: 'pages#home'
 
   resource :freelancer
 
-  namespace :account do
-    resources :invoices, except: :index
+  namespace :client do
+    resources :invoices, only: [:index, :show]
   end
 
 end
