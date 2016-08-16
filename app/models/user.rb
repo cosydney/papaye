@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_one :freelance
   has_one :client
 
+  validates :freelancer
+
 def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data["email"]).first

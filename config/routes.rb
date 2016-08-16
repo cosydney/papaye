@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+  get 'clients/edit'
+
+  get 'clients/update'
+
+  get 'clients/new'
+
+  get 'clients/create'
+
+  get 'clients/destroy'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root to: 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
