@@ -1,0 +1,12 @@
+<h1>Edit</h1>
+
+<%= simple_form_for @invoice do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :invoice_nr %>
+  <%= f.input :invoice_date %>
+  <%= f.input :due_date %>
+  <%= f.input :invoice_terms %>
+  <%= f.button :submit %>
+<% end %>
+

@@ -1,0 +1,9 @@
+<h1>Show</h1>
+<p> Invoice Nr.: <%= @invoice.invoice_date %></p>
+<p> Date: <%= @invoice.invoice_date %></p>
+<p> Due on: <%= @invoice.due_date %></p>
+<p> Term: <%= @invoice.invoice_terms %></p>
+<br>
+<p><%= link_to "Dashboard", dashboard_path %></p>
+<p><%= link_to "Edit", edit_invoice_path(@invoice) %></p>
+
