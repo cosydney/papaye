@@ -1,13 +1,13 @@
-class RegistrationsController < ApplicationController
+class RegistrationsController < Devise::RegistrationsController
   protected
 
    # To redirct users after sign-up to edit
 
   def after_sign_up_path_for(user)
     if current_user.freelancer
-      'freelancer/edit'
+      edit_freelancer_path(user.freelancer.id)
     else
-      'client/edit'
+      edit_client_path(user.client.id)
     end
   end
 end
