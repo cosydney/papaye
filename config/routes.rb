@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     root to: 'invoices#index', as: :dashboard
   end
 
-  root to: 'pages#home'
-
   resource :freelancer
 
   resources :invoices, except: :index

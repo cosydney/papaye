@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  has_one :freelance
+  has_one :freelancer
   has_one :client
 
 def self.from_omniauth(access_token)
@@ -17,12 +17,10 @@ def self.from_omniauth(access_token)
            email: data["email"],
            password: Devise.friendly_token[0,20]
         )
-
-        user.create_freelance(
+        user.create_freelancer(
           first_name: data["first_name"],
           last_name: data["last_name"],
-
-          )
+        )
     end
     user
 end
