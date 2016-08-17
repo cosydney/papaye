@@ -32,18 +32,15 @@
   <% elsif devise_controller? %>
   <%= render 'shared/flashes' %>
   <%= render 'shared/loginbanner' %>
-
   <%= yield %>
-<hr>
-<br>
+  <br>
+  <%= render 'shared/footer' %>
 <!-- any other case, home page for example -->
   <% else %>
   <%= render 'shared/flashes' %>
-
   <%= render 'shared/navbar' %>
   <%= yield %>
-
-
+  <%= render 'shared/footer' %>
   <% end %>
   <%= javascript_include_tag 'application' %>
 </body>
