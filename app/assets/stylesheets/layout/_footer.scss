@@ -1,12 +1,12 @@
 .footer-container{
-  background-color: #31081F;
+  background-color: $dark-purple;
   position: relative;
 }
 #footer{
   padding: 30px 0px;
   height: auto;
   p{
-    color: #BEBFC2;
+    color: $white;
     font-size: 14px;
     font-family: 'Source sans pro';
   }
@@ -14,7 +14,7 @@
     color: #E2E4F6;
   }
   a{
-    color: #BEBFC2;
+    color: $white;
     text-decoration: none;
     &:hover{
       color: white;
@@ -23,7 +23,7 @@
     }
   }
   .li-social{
-    color: #E2E4F6;
+    color: $white;
     height: 40px;
     font-size: 1.8em;
     a:hover{
