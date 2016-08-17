@@ -1,9 +1,25 @@
+
+
+.btn-invoice{
+  padding: 9px 18px;
+  margin-bottom: 20px;
+  border: 1px solid $brand-color;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background-color: $brand-color;
+  &:hover{
+    background-color: $lightpurple;
+    border: 1px solid $brand-color;
+    color: $brand-color;
+  }
+}
+
 .googleplus{
   &:hover{
     opacity: 0.9;
   }
 }
-
 .googleplus img{
   height: 50px;
   margin-bottom: 30px;
