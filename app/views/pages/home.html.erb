@@ -16,18 +16,17 @@
   </div>
 </div>
 
-
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
-      <div class="card tree-box-margin">
-        <h2>Create and send your invoice</h2>
+      <div class="card tree-box-margin" >
+        <h3>Create and send your invoice</h3>
         <p>Client and freelancer agree to terms</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h2>Secure the payment from your client</h2>
+        <h3>Secure the payment from your client</h3>
         <p>Invictus secures the payment</p>
         <br>
         <p>Start to work when your client has deposit the money into Invictus account</p>
@@ -35,7 +34,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h2>Finish your project and get paid immediatly</h2>
+        <h3>Finish your project and get paid immediatly</h3>
         <p>
           The money gets release when the client apprevoes your project and the freelance receives the money as soon as the project is finished.
         </p>
@@ -43,26 +42,31 @@
     </div>
   </div>
 </div>
-
+<hr>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
+
+    <div class="container">
+      <div class="col-xs-6">
       <div class="card two-box-margin">
-        <h2>You said, late?</h2>
+        <h3>You said, late?</h3>
         <p>
           Avoid any late payment and focus on what you do best.
         </p>
-      </div>
-  </div>
+      </div></div>
+      <div class="col-xs-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
+
 </div>
+<hr>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <!-- insert <div class="card"> -->
+      <%= image_tag 'onemorething.jpg', class: "home-img" %>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="card two-box-margin">
-        <h2>Just one more thing</h2>
+        <h3>Just one more thing</h3>
         <p>
           Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?
         </p>
@@ -70,15 +74,20 @@
     </div>
   </div>
 </div>
-
+<hr>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
       <div class="card one-box-margin">
-        <h2>Build trust</h2>
+        <h3>Build trust</h3>
         <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim laboriosam, dolor sint recusandae. Aut adipisci a provident temporibus similique. Quo eaque, dolorem ratione obcaecati quidem commodi quis dolorum incidunt consequuntur.
-        </p>
+        Our service allow you to capture your client credit card info and charge him when you finish the mission.
+         <br>
+
+         </p>
+         <div class="cta">
+           <%= link_to "Discover the power of Invictus", new_user_registration_path, :class => "btn btn-invoice"%>
+        </div>
       </div>
     </div>
   </div>
