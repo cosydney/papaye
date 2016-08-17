@@ -27,4 +27,6 @@ Rails.application.routes.draw do
     resources :invoices, only: [:index, :show]
   end
 
+  resources :pages
+
 end

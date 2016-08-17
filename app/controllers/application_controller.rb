@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+  after_action :set_navbar
+
+  def set_navbar
+    @navbar ||= :left
+  end
+
 end
