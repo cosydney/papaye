@@ -17,7 +17,7 @@
     color: $white;
     text-decoration: none;
     &:hover{
-      color: white;
+      color: #F05D5E;
       opacity: 0.5;
       text-decoration: none;
     }
@@ -26,9 +26,6 @@
     color: $white;
     height: 40px;
     font-size: 1.8em;
-    a:hover{
-      color: #F05D5E;
-    }
   }
 }
 .footer-row{
