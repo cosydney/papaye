@@ -2,6 +2,9 @@
   <h4>Logo</h4>
 </div>
 <div class="text-center">
-
-  <h1>Welcome  current_user.freelancer.first_name </h1>
+<% if current_user.nil? %>
+ <h1>Welcome please sign in</h1>
+<% else %>
+  <h1>Welcome <%=  current_user.freelancer.first_name %> </h1>
+  <% end %>
 </div>
