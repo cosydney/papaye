@@ -46,7 +46,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
 
     if @invoice.update(invoice_params)
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: 'Invoice has been updated.'
     else
       render :edit
     end
