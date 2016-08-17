@@ -9,6 +9,7 @@ class FreelancersController < ApplicationController
       if @freelancer.update(freelancer_params)
 
         format.html { redirect_to @freelancer, notice: 'Freelancer was successfully updated.' }
+
         format.json { render :show, status: :ok, location: @freelancer }
       else
         format.html { render :edit }
