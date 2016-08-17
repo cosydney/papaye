@@ -10,12 +10,22 @@ class InvoicesController < ApplicationController
   # TODO create a new Invoice (new/create). After create redirect to index.
   def new
     @invoice = Invoice.new
+    @client = Client.new
+    @user = User.new
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @client = Client.where(company: client_params[:company], company_number: client_params[:company_number]).first
+    # Create new client if the var @client is nil (||=)
+    @client ||= Client.create(client_params)
+
+    @user = User.where(email: client_params[:email]).first
+    @client.update(user_id: @user.id) if @user
+
+    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id))
 
     if @invoice.save
+      # To do some flash stuff!
       redirect_to dashboard_path
     else
       render :new
@@ -60,4 +70,7 @@ class InvoicesController < ApplicationController
     params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms)
   end
 
+  def client_params
+    params.require(:client).permit(:first_name, :last_name, :company, :company_number, :email)
+  end
 end
