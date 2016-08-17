@@ -3,9 +3,18 @@
 <%= simple_form_for @invoice do |f| %>
   <%= f.error_notification %>
 
+  <%= simple_fields_for :client do |c| %>
+    <%= c.input :first_name %>
+    <%= c.input :last_name %>
+    <%= c.input :company %>
+    <%= c.input :company_number %>
+    <%= c.input :email %>
+  <% end %>
+
   <%= f.input :invoice_nr %>
   <%= f.input :invoice_date %>
   <%= f.input :due_date %>
   <%= f.input :invoice_terms %>
+
   <%= f.button :submit %>
 <% end %>
