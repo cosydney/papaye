@@ -3,4 +3,8 @@ class PagesController < ApplicationController
   def home
     @navbar = :top
   end
+
+  def signup
+    @navbar =:top
+  end
 end
