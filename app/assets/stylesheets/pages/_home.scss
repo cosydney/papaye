@@ -21,6 +21,7 @@
   }
   h3 {
     color: $white;
+    font-family: $base-font;
     font-size: 20px;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.7);
@@ -36,6 +37,9 @@
     margin-top: 15px;
   }
 }
+
+
+
 .card {
   padding: 10px 10px;
   border-radius: 4px;
@@ -54,10 +58,27 @@
 }
 .tree-box-margin{
   margin: 80px 10px;
+  background-image: linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%);
 }
 .two-box-margin{
   margin: 0 10px 30px 10px;
+  background-image:  linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%);
 }
 .one-box-margin{
   margin: 50px 10px 80px 10px;
+  background-image:  linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%);
+  .cta{
+    margin-top: 30px;
+  }
 }
+
+.home-img{
+  height:250px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px lightgrey;
+}
+
+
+
+
+

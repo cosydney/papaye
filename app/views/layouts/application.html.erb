@@ -27,10 +27,20 @@
       </div>
     </div>
   </div>
-  <!--  -->
-  <% else %>
-  <%= render 'shared/navbar' %>
+
+  <!-- if it goes through devise controller: this will happen -->
+  <% elsif devise_controller? %>
   <%= render 'shared/flashes' %>
+  <%= render 'shared/loginbanner' %>
+
+  <%= yield %>
+<hr>
+<br>
+<!-- any other case, home page for example -->
+  <% else %>
+  <%= render 'shared/flashes' %>
+
+  <%= render 'shared/navbar' %>
   <%= yield %>
 
 
