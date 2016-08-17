@@ -1,0 +1,42 @@
+
+
+
+  <h1>New</h1>
+
+  <%= simple_form_for @invoice, :html => { :class => 'invoice-form', :data => {:'parsley-validate' => " "} } do |f| %>
+    <%= f.error_notification %>
+
+    <%= simple_fields_for :client do |c| %>
+      <%= c.error_notification %>
+
+      <%= c.input :first_name, label: 'Your first name please', error: 'First Name is mandatory, please specify one', :input_html => {:data => { :'parsley-length' => "[4, 20]", :'parsley-group' => "block1" } } %>
+      <%= c.input :last_name, label: 'Your last name please', error: 'Last Name is mandatory, please specify one', :data => { :'parsley-length' => "[4, 20]", :'parsley-group' => "block2" }  %>
+      <%= c.input :company %>
+      <%= c.input :company_number %>
+      <%= c.input :email, label: 'Your email please', placeholder: 'user@domain.com', :html => { :id => 'invoice-email' } %>
+    <% end %>
+
+    <%= f.input :invoice_nr %>
+    <%= f.input :invoice_date %>
+    <%= f.input :due_date %>
+    <%= f.input :invoice_terms %>
+
+    <%= f.button :submit, :html => { :id => 'invoice-submit' }, wrapper_html: { class: 'invalid-form-error-message' } %>
+  <% end %>
+
+
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+
+      $('.invoice-form').parsley().on('form:validate', function (formInstance) {
+        var ok = formInstance.isValid({group: 'block1', force: true}) || formInstance.isValid({group: 'block2', force: true});
+        $('.invalid-form-error-message')
+          .html(ok ? '' : 'You must correctly fill *at least one of these two blocks!')
+          .toggleClass('filled', !ok);
+        if (!ok)
+          formInstance.validationResult = false;
+      });
+  </script>
+<% end %>
+
+

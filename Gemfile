@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "omniauth-google-oauth2"
 
+# gem "parsley-rails"
+
 
 group :development, :test do
   gem 'binding_of_caller'
