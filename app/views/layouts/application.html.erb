@@ -11,28 +11,38 @@
 </head>
 <body>
   <!-- If navbar is set to top we display the one on top -->
-  <% if @navbar == :top %>
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
-<!--  -->
-  <% else %>
+  <% if user_signed_in? %>
   <!-- navbar = left -->
-
-    <%= render 'shared/welcome' %>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2 col-lg-2">
-          <%= render 'shared/sidebar' %>
+  <%= render 'shared/welcome' %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2 col-lg-2">
+        <%= render 'shared/sidebar' %>
       </div>
       <div class="col-sm-10 col-lg-10">
-      <div class="dashboard-wrapper">
-        <%= render 'shared/flashes' %>
-        <%= yield %>
+        <div class="dashboard-wrapper">
+          <%= render 'shared/flashes' %>
+          <%= yield %>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- if it goes through devise controller: this will happen -->
+  <% elsif devise_controller? %>
+  <%= render 'shared/flashes' %>
+  <%= render 'shared/loginbanner' %>
+
+  <%= yield %>
+<hr>
+<br>
+<!-- any other case, home page for example -->
+  <% else %>
+  <%= render 'shared/flashes' %>
+
+  <%= render 'shared/navbar' %>
+  <%= yield %>
+
 
   <% end %>
   <%= javascript_include_tag 'application' %>
