@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   resource :freelancer
 
-  resources :invoices, except: :index
+  namespace :client do
+    resources :invoices, only: [:index, :show]
+  end
 
   resources :pages
 
