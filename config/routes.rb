@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   resource :freelancer
 
   namespace :client do
-    resources :invoices, only: [:index, :show]
+    resources :invoices, only: [:index, :show, :create]
   end
 
+  resources :invoices
   resources :pages
 
 end
