@@ -32,11 +32,6 @@ class User < ActiveRecord::Base
     user
   end
 
-        user.create_freelancer(
-          first_name: data["first_name"],
-          last_name: data["last_name"],
-
-
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(:email => data[:email]).first
