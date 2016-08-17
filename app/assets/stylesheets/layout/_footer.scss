@@ -1,1 +1,44 @@
-// Your footer style
+.footer-container{
+  background-color: #31081F;
+  position: relative;
+}
+#footer{
+  padding: 30px 0px;
+  height: auto;
+  p{
+    color: #BEBFC2;
+    font-size: 14px;
+    font-family: 'Source sans pro';
+  }
+  h4{
+    color: #E2E4F6;
+  }
+  a{
+    color: #BEBFC2;
+    text-decoration: none;
+    &:hover{
+      color: white;
+      opacity: 0.5;
+      text-decoration: none;
+    }
+  }
+  .li-social{
+    color: #E2E4F6;
+    height: 40px;
+    font-size: 1.8em;
+    a:hover{
+      color: #F05D5E;
+    }
+  }
+}
+.socials{
+  padding-top: 10px;
+}
+.copy-right{
+  padding-top: 10px;
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  color: #BEBFC2;
+  font-size: 10px;
+}
