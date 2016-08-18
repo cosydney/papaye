@@ -1,3 +1,15 @@
+.burger-collapse{
+  background-color: $brand-color;
+}
+
+.burger{
+  z-index: 1031;
+  position: absolute;
+  background-color: transparent;
+  border:none;
+  right: 10px;
+}
+
 #powered-by{
   position: absolute;
   bottom: 0;
@@ -7,6 +19,7 @@
 }
 
 #welcomenavbar{
+  top: 0;
   margin-top: 5px;
   border-radius: 3px;
   position: fixed;
@@ -20,5 +33,11 @@
     font-size: 40px;
     font-weight: bold;
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media only screen and (max-width: 770px){
+  #welcomenavbar{
+    width: 95%;
   }
 }
