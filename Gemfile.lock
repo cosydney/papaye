@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: 41e30d424e9a56ea4b310087615e1fdc94d87810
+  specs:
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -115,6 +131,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    parsley-rails (2.0.7.0)
+      railties (>= 3.0.0)
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -202,12 +220,15 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  datetimepicker-rails!
   devise
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (~> 2.9)!
   omniauth-google-oauth2
+  parsley-rails
   pg
   pry-byebug
   pry-rails
