@@ -11,7 +11,7 @@
    <li> <%= link_to "Profile", freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
 
   </ul>
-  <div class="btn btn-navbar" id="logout-freelance"> <%= link_to destroy_user_session_path,  method: :delete do %>
+  <div class="btn btn-navbar navlink" id="logout-freelance"> <%= link_to destroy_user_session_path,  method: :delete do %>
     <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
     <% end %>
   </div>

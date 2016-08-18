@@ -30,6 +30,11 @@
   position: fixed;
   #navlink{
     color: #F3F7F0;
+  &:hover{
+    text-decoration: none;
+    font-weight: bold;
+    transition: font-weight 0.2s ease;
+  }
   }
 }
 
