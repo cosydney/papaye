@@ -43,7 +43,7 @@
 .card {
   padding: 10px 10px;
   border-radius: 4px;
-  background-color: #BEBFC2;
+  background-color: $brand-color;
   height: 250px;
   box-shadow: 2px 2px 3px 0px rgb(225,225,225);
   background-size: cover !important;
@@ -57,7 +57,7 @@
 }
 .tree-box-margin{
   margin: 80px 10px;
-  background-image: linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%);
+  background-image: linear-gradient(-225deg, $brand-color 40%,  rgba(14, 0, 61, 0.08) 40%);
   h1{
     margin: 0px;
   }
@@ -73,7 +73,7 @@
 }
 .one-box-margin{
   margin: 50px 10px 80px 10px;
-  background-image:  linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%);
+  background-image:  linear-gradient(-145deg, $brand-color 20%,  rgba(14, 0, 61, 0.08) 40%);
   .cta{
     margin-top: 30px;
   }
