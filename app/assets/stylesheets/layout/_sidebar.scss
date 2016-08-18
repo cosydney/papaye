@@ -1,14 +1,18 @@
 .active{
   font-weight: bold;
+  color: $gray-lighter;
 }
 
 #sidebar{
+  background-color: #2B4162;
   text-align: center;
-  margin-top: 120px;
   box-shadow: 1px 1px 1px lightgray;
   border-radius: 2px;
   margin-left: -9px;
   margin-right: -9px;
+  #navlink{
+    color: #F3F7F0;
+  }
 }
 
 #leftnavbar{
@@ -36,7 +40,7 @@
 
     position: fixed;
     margin: 0 -15px;
-    height: 80vh;
+    height: 100vh;
     width: inherit;
     overflow: auto;
     border-top-width: 0;
