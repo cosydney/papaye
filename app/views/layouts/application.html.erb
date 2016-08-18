@@ -13,13 +13,14 @@
   <!-- If navbar is set to top we display the one on top -->
   <% if user_signed_in? %>
   <!-- navbar = left -->
-  <%= render 'shared/welcome' %>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-lg-2">
         <%= render 'shared/sidebar' %>
       </div>
       <div class="col-sm-10 col-lg-10">
+        <%= render 'shared/welcome' %>
         <div class="dashboard-wrapper">
           <%= render 'shared/flashes' %>
           <%= yield %>
