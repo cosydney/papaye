@@ -1,20 +1,15 @@
-<h1>New</h1>
 
-<%= simple_form_for @invoice do |f| %>
-  <%= f.error_notification %>
 
-  <%= simple_fields_for :client do |c| %>
-    <%= c.input :first_name %>
-    <%= c.input :last_name %>
-    <%= c.input :company %>
-    <%= c.input :company_number %>
-    <%= c.input :email %>
-  <% end %>
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="form-container">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <%= f.input :invoice_nr %>
-  <%= f.input :invoice_date %>
-  <%= f.input :due_date %>
-  <%= f.input :invoice_terms %>
 
-  <%= f.button :submit %>
-<% end %>
