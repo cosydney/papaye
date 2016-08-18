@@ -1,11 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= image_path '' %>);">
-  <div class="banner-content">
-    <h1>It's not about the payment</h1>
-    <h3>It's about not worring about it</h3>
+<div class="banner" id="cocktail-show" style="background-image:  linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%), url(<%= image_path 'freelance.jpg'%>);">
+
+  <div class="banner-content text-center">
+    <div class="banner-text">
+      <br>
+      <h1>It's not about money</h1>
+      <h3>It's about not worrying about it</h3>
+    </div>
     <div class="tutorial text-center container">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-          <%= link_to "Create Invoice", new_user_registration_path, :class => "btn btn-default"%>
+          <%= link_to "Create Invoice", new_user_registration_path, :class => "btn btn-invoice"%>
         </div>
       </div>
     </div>
@@ -15,66 +19,77 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
-      <div class="card tree-box-margin">
-        <h2>Create and send your invoice</h2>
+      <div class="card tree-box-margin" >
+        <h1>1</h1>
+        <h3>Create and send your invoice</h3>
         <p>Client and freelancer agree to terms</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h2>Secure the payment from your client</h2>
-        <p>Invictus secures the payment</p>
-        <br>
-        <p>Start to work when your client has deposit the money into Invictus account</p>
+        <h1>2</h1>
+        <h3>Secure the payment</h3>
+        <p>Start to work when your client has given his credit card details</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h2>Finish your project and get paid immediatly</h2>
-        <p>
-          The money gets release when the client apprevoes your project and the freelance receives the money as soon as the project is finished.
+        <h1>3</h1>
+        <h3>Finish your project and get paid immediatly</h3>
+        <p> Money gets release has soon as you finish your mission
         </p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <div class="card two-box-margin">
-        <h2>You said, late?</h2>
-        <p>
-          Avoid any late payment and focus on what you do best.
-        </p>
-      </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <!-- insert <div class="card"> -->
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="card two-box-margin">
-        <h2>Just one more thing</h2>
-        <p>
-          Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?
-        </p>
-      </div>
-    </div>
-  </div>
+<div id="why-wrapper">
+<h1 class="text-center" id="why">Wait but why?</h1>
+<br>
+
+      <div class="container">
+        <div class="col-xs-6">
+          <div class="two-box-margin">
+            <h3>You said, late?</h3>
+            <p>
+              Ever had a client paying late ?... At Invictus we think you should focus on what you do best.
+            </p>
+          </div></div>
+          <div class="col-xs-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
+
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <%= image_tag 'onemorething.jpg', class: "home-img" %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <div class="two-box-margin">
+                <h3>Just one more thing...</h3>
+                <p>
+                  Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="card one-box-margin">
-        <h2>Build trust</h2>
-        <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim laboriosam, dolor sint recusandae. Aut adipisci a provident temporibus similique. Quo eaque, dolorem ratione obcaecati quidem commodi quis dolorum incidunt consequuntur.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="card one-box-margin">
+                <h3>Build trust</h3>
+                <p>
+                  Our service allow you to capture your client credit card info <br> and charge him <strong>only</strong> when you finish the mission.
+                  <br>
+
+                </p>
+                <div class="cta">
+                 <%= link_to "Signup and try Invictus now", new_user_registration_path,class: "btn btn-invoice"%>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
