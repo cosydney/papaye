@@ -1,0 +1,27 @@
+.invoice-wrapper{
+  margin: 10px 0;
+}
+.index-inline{
+  li{
+    display: inline;
+    margin-right: 40px;
+  }
+  list-style-type: none;
+}
+.icons-inline{
+  li{
+    display: inline;
+    margin-right: 20px;
+    a{
+      text-decoration: none;
+    }
+  }
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+  color: $grape;
+  &:hover{
+    color: $dark-purple;
+  }
+}
