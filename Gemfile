@@ -18,8 +18,9 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "omniauth-google-oauth2"
 
-# gem "parsley-rails"
-
+gem "parsley-rails"
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -28,7 +29,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-  gem 'figaro'
 
 end
 

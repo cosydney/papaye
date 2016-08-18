@@ -9,6 +9,3 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-development:
-  GOOGLE_CLIENT_SECRET: "9_4ngGal1iNs19q2XkfqZPzJ"
-  GOOGLE_CLIENT_ID: "616957856379-np632nq7vs49a32pakgppq58m4641gf8.apps.googleusercontent.com"
