@@ -1,8 +1,16 @@
 .burger-collapse{
   background-color: $brand-color;
+  width: 100%;
+  border-radius: 4px;
+  #navlink{
+    color: whitesmoke;
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .burger{
+  top: 5px;
   z-index: 1031;
   position: absolute;
   background-color: transparent;
