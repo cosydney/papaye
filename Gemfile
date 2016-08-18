@@ -27,6 +27,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring'
   gem 'figaro'
+  gem "letter_opener"
 
 end
 
