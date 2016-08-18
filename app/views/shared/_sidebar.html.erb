@@ -5,16 +5,14 @@
   <ul class="list-unstyled">
    <% if user_signed_in? %>
    <li><%= link_to "Create Invoice", new_invoice_path, class: "btn btn-invoice" %></li>
-   <li><%= link_to "Dashboard", dashboard_path %></li>
-   <li> <%= link_to "Settings", edit_freelancer_path %></li>
-   <li> <%= link_to "Profile", freelancer_path %></li>
-   <li class="btn btn-navbar"> <%= link_to destroy_user_session_path,  method: :delete do %>
-    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-    <% end %></li>
-    <% end %>
+   <li> <%= link_to "Dashboard", dashboard_path, class: current_link(dashboard_path) %></li>
+   <li> <%= link_to "Settings", edit_freelancer_path, class: current_link(edit_freelancer_path) %></li>
+   <li> <%= link_to "Profile", freelancer_path, class: current_link(freelancer_path) %></li>
+
   </ul>
-  <div class="pull-down btn btn-navbar" id="logout-freelance"> <%= link_to destroy_user_session_path,  method: :delete do %>
+  <div class="btn btn-navbar" id="logout-freelance"> <%= link_to destroy_user_session_path,  method: :delete do %>
     <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
     <% end %>
   </div>
 </nav>
+<% end %>
