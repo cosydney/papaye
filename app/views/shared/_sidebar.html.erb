@@ -3,6 +3,7 @@
   <!-- normal collapsible navbar markup -->
   <br>
   <ul class="list-unstyled">
+  <h3 class="sidebar-title"><%= current_user.freelancer.first_name %></h3>
    <% if user_signed_in? %>
    <li><%= link_to "Create Invoice", new_invoice_path, class: "btn btn-invoice" %></li>
    <li> <%= link_to "Dashboard", dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
