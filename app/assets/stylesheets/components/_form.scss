@@ -1,20 +1,40 @@
 
-// .simple_form label {
-//   color: $grape;
-//   width: 100px;
-//   text-align: right;
-//   margin: 2px 10px;
-// }
+.simple_form label {
+  color: grey;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+#new_invoice input {
+  border: none;
+
+}
 
 .simple_form div.input {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   clear: both; /* Required for Webkit, but not for Gecko */
 }
 
-.simple_form .hint {
-  clear: left;
-  margin-left: 120px;
-  color: #555;
-  display: block;
-  font-style: italic;
+.parsley-errors-list {
+  font-size: 7px;
+  color: #D6BBDF;
 }
+
+.form-group {
+  border-bottom: lightgray dotted;
+  border-width: 0.5px;
+}
+
+.freelancer-info{
+  font-size: 10px;
+  padding: 10px;
+  font-weight: lighter;
+  border: lightgray dotted;
+  border-width: 0.5px;
+  padding-bottom: 6px;
+ }
+
+ .freelancer-info-email{
+  color: #D6BBDF;
+  font-size: 10px;
+ }

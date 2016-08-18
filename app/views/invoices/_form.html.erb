@@ -1,34 +1,49 @@
 
-
-
-  <h1>New</h1>
-
-  <%= simple_form_for @invoice, :html => { :class => 'invoice-form', :data => {:'parsley-validate' => " "} } do |f| %>
+<h1>INVOICE</h1>
+  <%= simple_form_for @invoice, :html => { :class => 'invoice-form', :data => {:'parsley-validate' => ''} } do |f| %>
     <%= f.error_notification %>
 
     <%= simple_fields_for :client do |c| %>
       <%= c.error_notification %>
 
-      <%= c.input :first_name, label: 'Your first name please', error: 'First Name is mandatory, please specify one', :input_html => {:data => { :'parsley-length' => "[4, 20]", :'parsley-group' => "block1" } } %>
-      <%= c.input :last_name, label: 'Your last name please', error: 'Last Name is mandatory, please specify one', :data => { :'parsley-length' => "[4, 20]", :'parsley-group' => "block2" }  %>
-      <%= c.input :company %>
-      <%= c.input :company_number %>
-      <%= c.input :email, label: 'Your email please', placeholder: 'user@domain.com', :html => { :id => 'invoice-email' } %>
+      <%= c.input :first_name, label: 'Client first name', :input_html => {:data => { :'parsley-error-message' => "First Name is required please!", :'parsley-group' => "block1" } }  %>
+
+      <%= c.input :last_name, label: 'Client last name', :input_html => {:data => { :'parsley-error-message' => "Last Name is required please!", :'parsley-group' => "block2" } } %>
+
+      <%= c.input :company, :input_html => {:data => { :'parsley-error-message' => "Company is required please!" } } %>
+
+      <%= c.input :company_number  %>
+
+      <%= c.input :email, label: 'Your email', placeholder: 'user@domain.com', :html => { :id => 'invoice-email' } %>
     <% end %>
+    <%= f.input :invoice_nr, label: 'Invoice number' %>
 
-    <%= f.input :invoice_nr %>
-    <%= f.input :invoice_date %>
-    <%= f.input :due_date %>
-    <%= f.input :invoice_terms %>
+    <div class='row datetimerange'>
+      <div class="col-xs-6">
+        <%= f.input :invoice_date, as: :date_picker, input_html: {data: {date_options: {defaultDate: Date.today.year.to_s+'/'+Date.today.month.to_s+'/'+Date.today.day.to_s}}} %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.input :due_date, as: :date_picker %>
+      </div>
+    </div>
+    <%= f.input :invoice_terms, label: 'Invoice Terms' %>
 
-    <%= f.button :submit, :html => { :id => 'invoice-submit' }, wrapper_html: { class: 'invalid-form-error-message' } %>
+    <div class="row">
+      <div class="col-xs-3 col-xs-offset-9">
+        <div class="freelancer-info">
+          <p><%= current_user.freelancer.first_name %> <%= current_user.freelancer.last_name %></p>
+          <p class="freelancer-info-email"><%= current_user.email %></p>
+        </div>
+      </div>
+    </div>
+
+    <%= f.button :submit, :class => 'btn-invoice' %>
   <% end %>
 
 
 <% content_for(:after_js) do %>
   <script type="text/javascript">
-
-      $('.invoice-form').parsley().on('form:validate', function (formInstance) {
+      $('.invoice-form').parsley().on('field:validate', function (formInstance) {
         var ok = formInstance.isValid({group: 'block1', force: true}) || formInstance.isValid({group: 'block2', force: true});
         $('.invalid-form-error-message')
           .html(ok ? '' : 'You must correctly fill *at least one of these two blocks!')
@@ -36,6 +51,12 @@
         if (!ok)
           formInstance.validationResult = false;
       });
+      $('.datetimepicker').datetimepicker({
+        showTodayButton: true,
+        showClear: true,
+        showClose: true,
+      });
+
   </script>
 <% end %>
 
