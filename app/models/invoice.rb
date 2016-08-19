@@ -1,6 +1,7 @@
 class Invoice < ActiveRecord::Base
   belongs_to :freelancer
   belongs_to :client
+  validates :invoice_nr, presence: true
 
   has_many :descriptions
 
@@ -14,6 +15,6 @@ class Invoice < ActiveRecord::Base
     # calling method in user_mailer.rb, for now: delicer_now (no AfterJob so far)
     UserMailer.send_invoice_client(self.id).deliver_now
   end
-  validates :invoice_nr, presence: true
+
 
 end
