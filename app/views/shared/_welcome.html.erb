@@ -1,10 +1,33 @@
-<div>
-  <h4>Logo</h4>
+<div id="welcomenavbar">
+
+  <p id="powered-by">Powered by Invictus ©</p>
+  <div class="text-center">
+    <% if current_user.nil? %>
+    <h1>Welcome please sign in</h1>
+    <% else %>
+    <h1>Dashboard</h1>
+    <% end %>
+  </div>
+  <!-- Burger for mobile version -->
+<button class="hidden-sm hidden-md hidden-lg burger" type="button" data-toggle="collapse" data-target="#collapsenavbar" aria-controls="collapsenavbar" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="fa fa-bars fa-2x"></i>
+
+  </button>
+<div class="burger-collapse">
+  <div class="collapse navbar-toggleable-xs" id="collapsenavbar">
+    <!-- normal collapsible navbar markup -->
+    <br>
+    <ul class="list-inline text-center">
+      <li><%= link_to "Create Invoice", new_invoice_path, class: "btn btn-invoice" %></li>
+      <br>
+      <li> <%= link_to "Dashboard", dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
+      <li> <%= link_to "Settings", edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
+      <li> <%= link_to "Profile", freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
+      <li> <%= link_to "logout", destroy_user_session_path,  id: "navlink",method: :delete %></li>
+      <hr>
+    </ul>
+  </div>
 </div>
-<div class="text-center">
-<% if current_user.nil? %>
- <h1>Welcome please sign in</h1>
-<% else %>
-  <h1>Welcome <%=  current_user.freelancer.first_name %> </h1>
-  <% end %>
+<!--  -->
 </div>
+

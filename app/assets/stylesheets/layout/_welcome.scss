@@ -1,0 +1,54 @@
+.body{
+  background-color: #e6e6e6;
+}
+.burger-collapse{
+  background-color: $brand-color;
+  width: 100%;
+  border-radius: 4px;
+  #navlink{
+    color: whitesmoke;
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.burger{
+  top: 5px;
+  z-index: 1031;
+  position: absolute;
+  background-color: transparent;
+  border:none;
+  right: 10px;
+}
+
+#powered-by{
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  color: $light-gray;
+  font-size: 9px;
+}
+
+#welcomenavbar{
+  top: 0;
+  margin-top: 5px;
+  border-radius: 3px;
+  position: fixed;
+  background-color: whitesmoke;
+  width: 81%;
+  z-index: 1030;
+  padding-bottom: 30px;
+  box-shadow: 1px 1px 1px lightgray;
+  h1{
+    color: $brand-color;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media only screen and (max-width: 770px){
+  #welcomenavbar{
+    width: 95%;
+  }
+}
