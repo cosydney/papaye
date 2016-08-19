@@ -9,9 +9,9 @@ class InvoicesController < ApplicationController
 
   # TODO create a new Invoice (new/create). After create redirect to index.
   def new
-    @invoice = Invoice.new
-    @client = Client.new
     @disable_sidebars = true
+
+    @invoice = Invoice.new
     @invoice.build_client
     @user = User.new
   end
@@ -24,8 +24,7 @@ class InvoicesController < ApplicationController
     @user = User.where(email: client_params[:email]).first
     @client.update(user_id: @user.id) if @user
 
-    # passing freelancer_id to invoice, necessary to find invoice and client and send mail
-    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id, freelancer_id: current_user.freelancer.id))
+    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id))
 
     if @invoice.save
       # To do some flash stuff!
