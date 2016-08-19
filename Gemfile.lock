@@ -186,7 +186,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (11.2.2)
     redis (3.3.1)
-    responders (2.2.0)
+    responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.22)
     sass-rails (5.0.6)
@@ -231,11 +231,8 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
-<<<<<<< HEAD
   letter_opener
-=======
   momentjs-rails (~> 2.9)!
->>>>>>> 6cdb8af1d69a03d900d74fbd1ee9dea95ac44dbd
   omniauth-google-oauth2
   parsley-rails
   pg
