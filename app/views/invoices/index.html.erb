@@ -1,16 +1,18 @@
 <% if @invoices.blank? %>
 
 <% random_giphy = ["https://media.giphy.com/media/l0K4kb8OCuf19HbwY/giphy.gif", "https://media.giphy.com/media/IThjAlJnD9WNO/giphy.gif", "https://media.giphy.com/media/kZzY6eKKPdIjK/giphy.gif", "https://media.giphy.com/media/l0MYBV2Ogo473zMJy/giphy.gif", "https://media.giphy.com/media/l46CjoMYO5n2hQnWE/giphy.gif", "https://media.giphy.com/media/l0K4eqUA7awmShAqc/giphy.gif", "https://media.giphy.com/media/9qIQcHFew1dAs/giphy.gif" ] %>
+<div class="row">
+  <div class="text-center">
+    <%= image_tag random_giphy.sample %>
+    <h3>Hi there</h3>
 
-<div class="text-center">
-  <h3>Hello there</h3>
-  <%= image_tag random_giphy.sample %>
- <h3>You don't have any invoice at the moment</h3>
- <h3>Create your first one here :</h3>
- <br>
- <%= link_to "Create my first Invoice", new_invoice_path, class: "btn btn-flashy" %>
-
+    <h3>You don't have any invoice at the moment</h3>
+    <h3>Create your first one here :</h3>
+    <br>
+    <%= link_to "Create my first Invoice", new_invoice_path, class: "btn btn-flashy" %>
+  </div>
 </div>
+
 <% else %>
 <% @invoices.each do |invoice| %>
 <div class="invoice-wrapper">
