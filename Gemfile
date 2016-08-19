@@ -31,7 +31,6 @@ group :development, :test do
   gem 'spring'
   gem 'figaro'
   gem 'letter_opener'
-
 end
 
 gem 'rails_12factor', group: :production
