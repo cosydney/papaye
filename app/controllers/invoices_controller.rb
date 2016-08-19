@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  # before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
@@ -24,7 +24,8 @@ class InvoicesController < ApplicationController
     @user = User.where(email: client_params[:email]).first
     @client.update(user_id: @user.id) if @user
 
-    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id))
+    # passing freelancer_id to invoice, necessary to find invoice and client and send mail
+    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id, freelancer_id: current_user.freelancer.id))
 
     if @invoice.save
       # To do some flash stuff!
@@ -44,11 +45,14 @@ class InvoicesController < ApplicationController
 
   # TODO edit an already existing Invoice (edit/update). Afterward redirect to index
   def edit
+    @client = @invoice.client
     @invoice = Invoice.find(params[:id])
   end
 
   def update
     @invoice = Invoice.find(params[:id])
+    @client = @invoice.client
+    @client.update(client_params)
 
     if @invoice.update(invoice_params)
       redirect_to dashboard_path, notice: 'Invoice has been updated.'
@@ -59,6 +63,7 @@ class InvoicesController < ApplicationController
 
   # TODO destroy a specific Invoice
   def destroy
+    @invoice.destroy
     redirect_to dashboard_path
   end
 
@@ -66,7 +71,7 @@ class InvoicesController < ApplicationController
   private
 
   def set_invoice
-    @invoice = current_user.invoices.find(params[:id])
+    @invoice = Invoice.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

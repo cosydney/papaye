@@ -39,4 +39,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Opens sended email in new tab in browser
+  config.action_mailer.delivery_method = :letter_opener
 end
