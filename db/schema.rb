@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816175845) do
+ActiveRecord::Schema.define(version: 20160819112008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 20160816175845) do
   end
 
   add_index "freelancers", ["user_id"], name: "index_freelancers_on_user_id", using: :btree
+
+  create_table "invoice_transitions", force: :cascade do |t|
+    t.string   "to_state",                   null: false
+    t.text     "metadata",    default: "{}"
+    t.integer  "sort_key",                   null: false
+    t.integer  "invoice_id",                 null: false
+    t.boolean  "most_recent",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "invoice_transitions", ["invoice_id", "most_recent"], name: "index_invoice_transitions_parent_most_recent", unique: true, where: "most_recent", using: :btree
+  add_index "invoice_transitions", ["invoice_id", "sort_key"], name: "index_invoice_transitions_parent_sort", unique: true, using: :btree
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "freelancer_id"
