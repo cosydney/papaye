@@ -8,10 +8,15 @@ class UserMailer < ApplicationMailer
   def send_invoice_client(invoice_id)
     @invoice = Invoice.find(invoice_id)
 
-    # client email is saved in the object invoice
+    # Client email is saved in the object invoice
     @client_email = @invoice.client.email
 
-    mail to: "to@example.org"
+    # Set freelancer (fl) name
+    @fl_first_name = @invoice.freelancer.first_name
+    @fl_last_name = @invoice.freelancer.last_name
+    @fl_name = "#{@fl_first_name} #{fl_last_name}"
+
+    # Render a view in app?views?user_email
   end
 
 end
