@@ -29,7 +29,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-  gem "letter_opener"
+  gem 'letter_opener'
 
 end
 
