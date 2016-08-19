@@ -11,7 +11,7 @@ class Invoice < ActiveRecord::Base
 # This is done to give some state to each invoice and tell the freelancer what is it.
   def state_machine
     @state_machine ||= InvoiceStateMachine.new(self, transition_class: InvoiceTransition,
-                                                     association_name: :transitions)
+                                                      association_name: :transitions)
   end
 
   # optionally delegating some methods
