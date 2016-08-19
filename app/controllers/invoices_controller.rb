@@ -11,6 +11,8 @@ class InvoicesController < ApplicationController
   def new
     @invoice = Invoice.new
     @client = Client.new
+    @disable_sidebars = true
+    @invoice.build_client
     @user = User.new
   end
 
@@ -27,10 +29,13 @@ class InvoicesController < ApplicationController
 
     if @invoice.save
       # To do some flash stuff!
-      redirect_to dashboard_path
+      @disable_sidebars = false
+      redirect_to dashboard_path, notice: 'Invoice saved!'
     else
+      @disable_sidebars = true
       render :new
     end
+
   end
 
   # TODO show a specific Invoice. link_to back, edit
