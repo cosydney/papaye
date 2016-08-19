@@ -1,60 +1,26 @@
 <div class="container invoice-wrapper">
   <% @invoices.each do |invoice| %>
-    <div class="row">
-      <div class="col-xs-10 col-sm-9">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-3">
-              <%= invoice.client.first_name%>
-              <%= invoice.client.last_name %>
-            </div>
-            <div class="col-xs-2">
-              <p>$300</p>
-            </div>
-            <div class="col-xs-2">
-              <p>pending</p>
-            </div>
-            <div class="col-xs-3 col-sm-2">
-              <%= invoice.due_date %>
-            </div>
-          </div>
-        </div>
-        <!-- <ul class="index-inline">
-          <li>
-            <%= invoice.client.first_name%>
-            <%= invoice.client.last_name %>
-          </li>
-          <li>
-            300$
-          </li>
-          <li>
-            pending
-          </li>
-          <li>
-            <%= invoice.due_date %>
-          </li>
-        </ul> -->
-      </div>
-      <div class="col-xs-2 col-sm-3">
-      <ul class="icons-inline">
-        <li>
-          <%= link_to invoice_path(invoice) do %>
-            <i class="fa fa-eye" aria-hidden="true"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to edit_invoice_path(invoice) do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to invoice_path(invoice), method: :delete,
-          data: { confirm: 'Are you sure?' } do %>
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          <% end %>
-        </li>
-      </ul>
-      </div>
-    </div>
+  <%= invoice.client.first_name%>
+  <%= invoice.client.last_name %>
+  <p>$300</p>
+  <p>pending</p>
+  <%= invoice.due_date %>
+  <ul class="icons-inline">
+    <li>
+      <%= link_to invoice_path(invoice) do %>
+      <i class="fa fa-eye" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to edit_invoice_path(invoice) do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to invoice_path(invoice), method: :delete,
+      data: { confirm: 'Are you sure?' } do %>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+    </li>
+  </ul>
   <% end %>
-</div>
