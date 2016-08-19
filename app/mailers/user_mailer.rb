@@ -5,9 +5,13 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.invoice_to_client.subject
   #
-  def invoice_to_client
-    @greeting = "Hi"
+  def send_invoice_client(invoice_id)
+    @invoice = Invoice.find(invoice_id)
+
+    # client email is saved in the object invoice
+    @client_email = @invoice.client.email
 
     mail to: "to@example.org"
   end
+
 end
