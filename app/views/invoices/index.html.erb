@@ -14,7 +14,7 @@
 </div>
 
 <% else %>
-<% @invoices.each do |invoice| %>
+<% current_user.freelancer.invoices.each do |invoice| %>
 <div class="invoice-wrapper">
  <div class="row">
   <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div>
