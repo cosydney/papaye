@@ -1,11 +1,13 @@
-<% quotes = ["It always seems impossible until its done. Nelson Mandela","Good, better, best. Never let it rest. 'Til your good is better and your better is best. St. Jerome", "We should not give up and we should not allow the problem to defeat us. - A. P. J. Abdul Kalam", "In order to succeed, we must first believe that we can. - Nikos Kazantzakis", "Always do your best. What you plant now, you will harvest later - Og Mandino", "Whether you think you can, or you think you can't--you're right. - Henry Ford" ] %>
+<% quotes = [["It always seems impossible until its done.", "Nelson Mandela"],["Good, better, best. Never let it rest. 'Til your good is better and your better is best.", "St. Jerome"], ["We should not give up and we should not allow the problem to defeat us.", " A. P. J. Abdul Kalam"], ["In order to succeed, we must first believe that we can.", "Nikos Kazantzakis"], ["Always do your best. What you plant now, you will harvest later", "Og Mandino"], ["Whether you think you can, or you think you can't--you're right.", "Henry Ford"] ] %>
+<% quote = quotes.sample %>
 
 <div class="banner" id="loginbanner" style="background-image:  linear-gradient(-225deg, rgba(66, 45, 84, 0.71) 0%, rgba(14, 0, 61, 0.71) 50%), url(<%= image_path 'freelance.jpg'%>);">
 
   <div class="banner-content text-center">
   <div class="banner-text">
   <br>
-    <h2><%= quotes.sample %></h2>
+    <h2><%= quote[0] %></h2>
+    <p> <%= quote[1] %></p>
     </div>
   </div>
 </div>
