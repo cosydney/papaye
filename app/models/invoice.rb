@@ -8,9 +8,9 @@ class Invoice < ActiveRecord::Base
 
   validates :invoice_nr, presence: true
 
-  # def self.freelance
-  #   @invoices = Freelance.invoices
-  # end
+  def self.freelance_invoices(freelance)
+    @invoices = freelance.freelancer.invoices
+  end
 
 # This is done to give some state to each invoice and tell the freelancer what is it.
   def state_machine
