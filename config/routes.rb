@@ -31,4 +31,12 @@ Rails.application.routes.draw do
   resources :invoices
   resources :pages
 
+  # sidekiq so we authenticate users for them to be in the admin
+  authenticate :user, lambda { |u| u.admin  } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
+
+
+
+

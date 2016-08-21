@@ -27,8 +27,8 @@ class Invoice < ActiveRecord::Base
   private
 
   def send_invoice_by_email
-    # Calling method in user_mailer.rb, for now: deliver_now (no AfterJob so far)
-    UserMailer.send_invoice_client(self.id).deliver_now
+    # Calling method in user_mailer.rb, delivers later so user doesn't have to wait
+    UserMailer.send_invoice_client(self.id).deliver_later
   end
 
 end
