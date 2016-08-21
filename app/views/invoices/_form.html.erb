@@ -124,8 +124,9 @@
       });
       // Add a new field
       $('#addNewDesc').click(function(event){
-        $('.invoice-descriptions').append('<div>' +
-          '<a class="removeDesc">Remove</a>' + '<h1>Olaa</h1>' + '</div>');
+        $('.invoice-descriptions').append('<div><input type="text" class="input-large" placeholder="Caption">'+
+
+  '<button class="removeDesc" type="button">remove</button></div>');
       });
 
       $("#addNewDesc").on('click', '.removeDesc', function(event){
