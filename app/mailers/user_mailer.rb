@@ -5,6 +5,11 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.invoice_to_client.subject
   #
+
+  # TODO welcoming users :)
+  def welcome
+
+  end
   def send_invoice_client(invoice_id)
     @invoice = Invoice.find(invoice_id)
 

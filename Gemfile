@@ -8,6 +8,11 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+# Background jobs
+gem 'sidekiq'
+gem 'sinatra'  # Dependency for the Sidekiq Dashboard
+gem 'sidekiq-failures'
+#  ---
 
 gem 'sass-rails'
 gem 'jquery-rails'
