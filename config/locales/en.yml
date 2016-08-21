@@ -24,3 +24,27 @@ en:
     required:
       text: 'required'
       mark: ' '
+  btn-create-invoice: 'Create Invoice'
+  home:
+    banner-title: "Don't worry about a thing"
+    banner-box1-h: 'Create and send your invoice'
+    banner-box1-p: 'Client and freelancer agree to terms'
+    banner-box2-h: 'Secure the payment'
+    banner-box2-p: 'Start to work when your client has given his credit card details'
+    banner-box3-h: 'Finish your project and get paid immediatly'
+    banner-box3-p: 'Money gets release has soon as you finish your mission'
+    banner-card-title: 'Wait but why?'
+    banner-card1-h: 'You said, late?'
+    banner-card1-p: 'Ever had a client paying late ?... At Invictus we think you should focus on what you do best.'
+    banner-card2-h: 'Just one more thing...'
+    banner-card2-p: 'Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?'
+    banner-description-h: 'Build trust'
+    banner-description-p1: 'Our service allow you to capture your client credit card info'
+    banner-description-p2: 'and charge him only when you finish the mission.'
+    banner-description-btn: 'Send your first invoice with Invictus'
+  invoice:
+    index:
+      hello: 'Hi there'
+      no-invoice: "You don't have any invoice at the moment"
+      create-1-invoice: "Create your first one here:"
+      btn-1-invoice: "Create my first Invoice"
