@@ -1,11 +1,11 @@
 <div id="welcomenavbar">
 
-  <p id="powered-by">Powered by Invictus ©</p>
+  <p id="powered-by"><%= t('shared.welcome-nav.powered') %></p>
   <div class="text-center">
     <% if current_user.nil? %>
-    <h1>Welcome please sign in</h1>
+    <h1><%= t('shared.welcome-nav.not-signed') %></h1>
     <% else %>
-    <h1>Dashboard</h1>
+    <h1><%= t('dashboard') %></h1>
     <% end %>
   </div>
   <!-- Burger for mobile version -->
@@ -18,12 +18,12 @@
     <!-- normal collapsible navbar markup -->
     <br>
     <ul class="list-inline text-center">
-      <li><%= link_to "Create Invoice", new_invoice_path, class: "btn btn-invoice" %></li>
+      <li><%= link_to t('btn-create-invoice'), new_invoice_path, class: "btn btn-invoice" %></li>
       <br>
-      <li> <%= link_to "Dashboard", dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
-      <li> <%= link_to "Settings", edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
-      <li> <%= link_to "Profile", freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
-      <li> <%= link_to "logout", destroy_user_session_path,  id: "navlink",method: :delete %></li>
+      <li> <%= link_to t('dashboard'), dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
+      <li> <%= link_to t('settings'), edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
+      <li> <%= link_to t('profile'), freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
+      <li> <%= link_to t('logout'), destroy_user_session_path,  id: "navlink",method: :delete %></li>
       <hr>
     </ul>
   </div>

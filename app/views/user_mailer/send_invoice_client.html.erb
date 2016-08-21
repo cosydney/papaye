@@ -553,7 +553,6 @@
                     <tbody><tr>
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-
                             Your invoice from
                         </td>
                     </tr>
@@ -608,11 +607,12 @@
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <h1>Dear Mrs. / Ms. <%= @invoice.client.last_name %></h1>
+                            <h1> <%= t('mailer.send-inv.header') %> <%= @invoice.client.last_name %></h1>
 
-                            <p>Like we agreed you will find here a copy of the invoice to be paid.   Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Invictus.<br>
+                            <p><%= t('mailer.sent-inv.message') %><br>
                             <br>
-                            I look forward to start the mission,<br>
+                            <%= t('mailer.sent-inv.goodbye') %>
+                            <br>
                             <%= @fl_name %></p>
 
                         </td>
@@ -814,10 +814,9 @@
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <em>Copyright © 2016 Invictus, All rights reserved.</em><br>
-Made by freelancers for freelancers&nbsp;<br>
+                            <em><%= t('mailer.send-inv.copy-r') %></em><br><br>
 <br>
-<strong>Our mailing address is:</strong><br>
+<strong><%= t('mailer.send-inv.mailing') %></strong><br>
 invictus.invoice@gmail.com
                         </td>
                     </tr>

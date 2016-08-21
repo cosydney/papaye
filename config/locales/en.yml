@@ -24,6 +24,11 @@ en:
     required:
       text: 'required'
       mark: ' '
+  dashboard: 'Dashboard'
+  settings: 'Settings'
+  profile: 'Profile'
+  logout: 'Log-out'
+  # mail: 'invictus.invoice@gmail.com'
   btn-create-invoice: 'Create Invoice'
   home:
     banner-title: "Don't worry about a thing"
@@ -48,3 +53,20 @@ en:
       no-invoice: "You don't have any invoice at the moment"
       create-1-invoice: "Create your first one here:"
       btn-1-invoice: "Create my first Invoice"
+  shared:
+    footer:
+      contact-us: 'Contact Us'
+      terms-conditions: 'Terms & Conditions'
+      team: 'The Team'
+      copy-right-p: 'Made by Freelancers for Freelancers © 2016 invictus.com'
+    welcome-nav:
+      powered: 'Powered by Invictus ©'
+      not-signed: 'Welcome please sign in'
+  mailer:
+    send-inv:
+      header: 'Dear Mrs. / Ms. '
+      message: 'Like we agreed you will find here a copy of the invoice to be paid.   Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Invictus.'
+      goodbye: 'I look forward to start the mission,'
+      copy-r: 'Copyright © 2016 Invictus, All rights reserved.'
+      made: 'Made by freelancers for freelancers.'
+      mailing: 'Our mailing address is:'
