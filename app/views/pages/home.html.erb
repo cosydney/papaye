@@ -3,12 +3,12 @@
   <div class="banner-content text-center">
     <div class="banner-text">
       <br>
-      <h1>Don't worry about a thing</h1>
+      <h1><%= t('home.banner-title') %></h1>
     </div>
     <div class="tutorial text-center container">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-          <%= link_to "Create Invoice", new_user_registration_path, :class => "btn btn-invoice"%>
+          <%= link_to t('btn-create-invoice'), new_user_registration_path, :class => "btn btn-invoice"%>
         </div>
       </div>
     </div>
@@ -20,39 +20,36 @@
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin" >
         <h1>1</h1>
-        <h3>Create and send your invoice</h3>
-        <p>Client and freelancer agree to terms</p>
+        <h3><%= t('home.banner-box1-h') %></h3>
+        <p><%= t('home.banner-box1-p') %></p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
         <h1>2</h1>
-        <h3>Secure the payment</h3>
-        <p>Start to work when your client has given his credit card details</p>
+        <h3><%= t('home.banner-box2-h') %></h3>
+        <p><%= t('home.banner-box2-p') %></p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
         <h1>3</h1>
-        <h3>Finish your project and get paid immediatly</h3>
-        <p> Money gets release has soon as you finish your mission
-        </p>
+        <h3><%= t('home.banner-box3-h') %></h3>
+        <p><%= t('home.banner-box3-p') %></p>
       </div>
     </div>
   </div>
 </div>
 
 <div id="why-wrapper">
-<h1 class="text-center" id="why">Wait but why?</h1>
+<h1 class="text-center" id="why"><%= t('home.banner-card-title') %></h1>
 <br>
 
       <div class="container">
         <div class="col-xs-12 col-md-6">
           <div class="two-box-margin">
-            <h3>You said, late?</h3>
-            <p>
-              Ever had a client paying late ?... At Invictus we think you should focus on what you do best.
-            </p>
+            <h3><%= t('home.banner-card1-h') %></h3>
+            <p><%= t('home.banner-card1-p') %></p>
           </div></div>
           <div class="col-xs-12 col-md-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
 
@@ -63,12 +60,10 @@
             <div class="col-xs-12 col-sm-6">
               <%= image_tag 'onemorething.jpg', id: "stevejobs",class: "home-img" %>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-md-6">
               <div class="two-box-margin">
-                <h3>Just one more thing...</h3>
-                <p>
-                  Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?
-                </p>
+                <h3><%= t('home.banner-card2-h') %></h3>
+                <p><%= t('home.banner-card2-p') %></p>
               </div>
             </div>
           </div>
@@ -79,14 +74,11 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="card one-box-margin">
-                <h3>Build trust</h3>
-                <p>
-                  Our service allow you to capture your client credit card info <br> and charge him <strong>only</strong> when you finish the mission.
-                  <br>
-
-                </p>
+                <h3><%= t('home.banner-description-h') %></h3>
+                <p><%= t('home.banner-description-p1') %></p>
+                <p><%= t('home.banner-description-p2') %></p>
                 <div class="cta">
-                 <%= link_to "Send your first invoice with Invictus", new_user_registration_path,class: "btn btn-invoice"%>
+                 <%= link_to t('home.banner-description-btn'), new_user_registration_path,class: "btn btn-invoice"%>
                </div>
              </div>
            </div>
