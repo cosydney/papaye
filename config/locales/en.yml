@@ -49,7 +49,7 @@ en:
     banner-description-btn: 'Send your first invoice with Invictus'
   invoice:
     index:
-      hello: 'Hi there'
+      hello: "Hi there"
       no-invoice: "You don't have any invoice at the moment"
       create-1-invoice: "Create your first one here:"
       btn-1-invoice: "Create my first Invoice"
