@@ -34,7 +34,9 @@
   <% elsif devise_controller? %>
   <%= render 'shared/flashes' %>
   <%= render 'shared/loginbanner' %>
+
   <%= yield %>
+
   <br>
   <%= render 'shared/footer' %>
 <!-- any other case, home page for example -->
