@@ -27,6 +27,7 @@ gem 'statesman', '~> 2.0', '>= 2.0.1'
 gem "parsley-rails"
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem "cocoon"
 
 group :development, :test do
   gem 'binding_of_caller'

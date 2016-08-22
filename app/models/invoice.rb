@@ -5,6 +5,7 @@ class Invoice < ActiveRecord::Base
   has_many :descriptions
 
   accepts_nested_attributes_for :client
+  accepts_nested_attributes_for :descriptions, reject_if: :all_blank
 
   validates :invoice_nr, presence: true
 
