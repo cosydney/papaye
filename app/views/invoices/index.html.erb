@@ -19,6 +19,7 @@
 <% if !@invoices.blank? %>
 
   <% current_user.freelancer.invoices.each do |invoice| %>
+  <%= link_to invoice_path(invoice) do %>
     <div class="invoice-wrapper" id="<%= invoice.id %>">
      <div class="row">
       <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div>
@@ -29,15 +30,20 @@
       <div class="col-xs-5 col-md-3"><%= invoice.due_date %></div>
         <div class="col-xs-offset-7 col-xs-6 col-md-2 col-sm-offset-0">
           <ul class="icons-inline">
-            <li>
-              <%= link_to invoice_path(invoice) do %>
-               <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="See details"></i>
-              <% end %>
-            </li>
+           <!--    <li>
+
+                 <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="See details"></i>
+
+              </li> -->
             <li>
              <%= link_to edit_invoice_path(invoice) do %>
               <i class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit your invoice"></i>
             <% end %>
+            </li>
+            <li>
+              <%= link_to edit_email_invoice_path(invoice) do %>
+              <i class="fa fa-envelope" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Send your invoice"></i>
+              <% end %>
             </li>
             <li>
               <%= link_to invoice_path(invoice), method: :delete, remote: true,
@@ -49,5 +55,6 @@
         </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 <% end %>

@@ -15,7 +15,10 @@ class UserMailer < ApplicationMailer
   end
 
 
-  def send_invoice_client(invoice_id)
+  def send_invoice_client(invoice_id, text)
+    # text to be edited from freelancer
+    @text = text
+
     @invoice = Invoice.find(invoice_id)
 
     # Client email is saved in the object invoice

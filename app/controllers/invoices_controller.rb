@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :send_email, :edit_email]
 
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
@@ -16,6 +16,15 @@ class InvoicesController < ApplicationController
     @user = User.new
   end
 
+  def edit_email
+  end
+
+  def send_email
+    @invoice.send_invoice_by_email!(params[:text])
+    current_user.freelancer.update(email_text: params[:text]) if params[:save] == '1'
+    redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
+  end
+
   def create
     @client = Client.where(company: client_params[:company], company_number: client_params[:company_number]).first
     # Create new client if the var @client is nil (||=)
@@ -27,10 +36,17 @@ class InvoicesController < ApplicationController
     # passing freelancer_id to invoice, necessary to find invoice and client and send mail
     @invoice = Invoice.new(invoice_params.merge(client_id: @client.id, freelancer_id: current_user.freelancer.id))
 
+
     if @invoice.save
       # To do some flash stuff!
       @disable_sidebars = false
-      redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
+
+      if params[:commit] == "Preview & Send"
+        redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
+      else
+        redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"
+      end
+      # redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
     else
       @disable_sidebars = true
       render :new

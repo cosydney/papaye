@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   has_one :client
   after_create :my_create_freelancer # unless :is_client # add if statement for client
 
-
   def my_create_freelancer
     if virtual_data.nil?
       self.create_freelancer
