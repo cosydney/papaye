@@ -30,7 +30,7 @@ class InvoicesController < ApplicationController
     if @invoice.save
       # To do some flash stuff!
       @disable_sidebars = false
-      redirect_to dashboard_path, notice: 'Invoice saved!'
+      redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
     else
       @disable_sidebars = true
       render :new
@@ -63,8 +63,12 @@ class InvoicesController < ApplicationController
 
   # TODO destroy a specific Invoice
   def destroy
+    @id = @invoice.id
     @invoice.destroy
-    redirect_to dashboard_path
+    @invoices = current_user.freelancer.invoices
+    respond_to do |format|
+      format.js
+    end
   end
 
 

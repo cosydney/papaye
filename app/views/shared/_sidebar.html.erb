@@ -5,10 +5,10 @@
   <ul class="list-unstyled">
   <h3 class="sidebar-title"><%= current_user.freelancer.first_name %></h3>
    <% if user_signed_in? %>
-   <li><%= link_to t('btn-create-invoice'), new_invoice_path, class: "btn btn-invoice" %></li>
-   <li> <%= link_to t('dashboard'), dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
-   <li> <%= link_to t('settings'), edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
-   <li> <%= link_to t('profile'), freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
+   <li class="sidebar-nav"><%= link_to t('btn-create-invoice'), new_invoice_path, class: "btn btn-invoice"%></li>
+   <li class="sidebar-nav"> <%= link_to t('dashboard'), dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
+   <li class="sidebar-nav"> <%= link_to t('settings'), edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
+   <li class="sidebar-nav"> <%= link_to t('profile'), freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
 
   </ul>
   <div class="btn btn-navbar navlink" id="logout-freelance"> <%= link_to destroy_user_session_path,  method: :delete do %>

@@ -2,13 +2,13 @@ class Invoice < ActiveRecord::Base
   belongs_to :freelancer
   belongs_to :client
   has_many :transitions, class_name: "InvoiceTransition", autosave: false
-  has_many :descriptions
+  has_many :descriptions, dependent: :destroy
 
   accepts_nested_attributes_for :client
 
   validates :invoice_nr, presence: true
 
-  after_create :send_invoice_by_email
+  after_create :edit_email_before_sending
 
   def self.freelance_invoices(freelance)
     @invoices = freelance.freelancer.invoices
@@ -29,7 +29,6 @@ class Invoice < ActiveRecord::Base
   private
 
   def edit_email_before_sending
-
 
   end
 
