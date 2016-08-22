@@ -1,14 +1,24 @@
 class User < ActiveRecord::Base
-  attr_accessor :virtual_data
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+
+  attr_accessor :virtual_data, :invitation_instructions
 
   has_one :freelancer
   has_one :client
   after_create :my_create_freelancer # unless :is_client # add if statement for client
+
+  def self.invite_client!(attributes={}, invited_by=nil, options={})
+    puts attributes
+    puts invited_by
+    puts options
+    self.invite!(attributes, invited_by, options) do |invitable|
+      invitable.invitation_instructions = :client_invitation_instructions
+    end
+  end
 
 
   def my_create_freelancer

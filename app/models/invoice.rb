@@ -22,7 +22,8 @@ class Invoice < ActiveRecord::Base
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
           to: :state_machine
   # After the invoice gets created do:
-  after_create :send_invoice_by_email
+
+  # after_create :send_invoice_by_email
 
   private
 
