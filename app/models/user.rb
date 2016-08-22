@@ -12,9 +12,6 @@ class User < ActiveRecord::Base
   after_create :my_create_freelancer # unless :is_client # add if statement for client
 
   def self.invite_client!(attributes={}, invited_by=nil, options={})
-    puts attributes
-    puts invited_by
-    puts options
     self.invite!(attributes, invited_by, options) do |invitable|
       invitable.invitation_instructions = :client_invitation_instructions
     end

@@ -20,12 +20,12 @@ class InvoicesController < ApplicationController
   end
 
   def send_email
-    @user = User.where(email: client_params[:email]).first
+    @user = User.where(email: @invoice.client).first
     if @user
       @invoice.send_invoice_by_email!(params[:text])
       current_user.freelancer.update(email_text: params[:text]) if params[:save] == '1'
     else
-      User.invite_client!({email: client_params[:email]}, current_user, {invoice_id: @invoice.id, content: params[:text]})
+      User.invite_client!({email: @invoice.client }, current_user, {invoice_id: @invoice.id, content: params[:text]})
     end
     redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
   end
