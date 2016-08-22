@@ -18,24 +18,21 @@ class InvoicesController < ApplicationController
 
   def create
     @client = Client.where(company: client_params[:company], company_number: client_params[:company_number]).first
-    # Create new client if the var @client is nil (||=)
-    @client ||= Client.create(client_params)
+    @invoice = Invoice.new(invoice_params.merge(freelancer_id: current_user.freelancer.id))
 
-    @user = User.where(email: client_params[:email]).first
-    @client.update(user_id: @user.id) if @user
-
-    # passing freelancer_id to invoice, necessary to find invoice and client and send mail
-    @invoice = Invoice.new(invoice_params.merge(client_id: @client.id, freelancer_id: current_user.freelancer.id))
-
-    if @invoice.save
-      # To do some flash stuff!
-      @disable_sidebars = false
-      redirect_to dashboard_path, notice: 'Invoice saved!'
+    if @client
+      @invoice.client_id = @client.id
+      @invoice.save
+      UserMailer.send_invoice_client(@invoice.id).deliver_later
     else
-      @disable_sidebars = true
-      render :new
+      @client = Client.create(client_params)
+      @invoice.client_id = @client.id
+      @invoice.save
+      User.invite_client!({email: client_params[:email]}, current_user, {invoice_id: @invoice.id})
     end
 
+    update_user_client
+    redirect_to dashboard_path, notice: 'Invoice saved!'
   end
 
   # TODO show a specific Invoice. link_to back, edit
@@ -82,5 +79,10 @@ class InvoicesController < ApplicationController
 
   def client_params
     params.require(:client).permit(:first_name, :last_name, :company, :company_number, :email)
+  end
+
+  def update_user_client
+    @user = User.where(email: client_params[:email]).first
+    @client.update(user_id: @user.id) if @user
   end
 end

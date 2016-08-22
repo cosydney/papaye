@@ -553,7 +553,7 @@
                     <tbody><tr>
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-                           <%= t('mailer.sent-inv.subject') %>
+                            Your invoice from <%= @fl_name %>
                         </td>
                     </tr>
                 </tbody></table>
@@ -637,7 +637,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 15px;">
-                                <a class="mcnButton " title="Go to invoice" href="http://invictuss.herokuapp.com/users/sign_in" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Go to invoice</a>
+                            <%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token), :class => "mcnButton", :style=>"font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;" %>
                             </td>
                         </tr>
                     </tbody>
@@ -847,3 +847,4 @@ invictus.invoice@gmail.com
         </center>
     </body>
 </html>
+

@@ -7,6 +7,7 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'redis'
 # Background jobs
 gem 'sidekiq'
