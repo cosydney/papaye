@@ -10,6 +10,11 @@ class UserMailer < ApplicationMailer
   def welcome
 
   end
+
+  def edit_email_tbs
+  end
+
+
   def send_invoice_client(invoice_id)
     @invoice = Invoice.find(invoice_id)
 
