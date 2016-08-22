@@ -8,6 +8,8 @@ class Invoice < ActiveRecord::Base
 
   validates :invoice_nr, presence: true
 
+  after_create :send_invoice_by_email
+
   def self.freelance_invoices(freelance)
     @invoices = freelance.freelancer.invoices
   end
@@ -22,9 +24,14 @@ class Invoice < ActiveRecord::Base
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
           to: :state_machine
   # After the invoice gets created do:
-  after_create :send_invoice_by_email
+
 
   private
+
+  def edit_email_before_sending
+
+
+  end
 
   def send_invoice_by_email
     # Calling method in user_mailer.rb, delivers later so user doesn't have to wait

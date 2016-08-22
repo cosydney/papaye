@@ -1,4 +1,8 @@
+en.user_mailer.invoice_to_client.subject
 en:
+  user_mailer:
+    invoice_to_client:
+      # subject:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
