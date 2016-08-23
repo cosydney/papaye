@@ -24,7 +24,7 @@ class Client::InvoicesController < ApplicationController
   end
 
   def set_invoice
-    @invoice = current_user.invoices.find(params[:id])
+    @invoice = current_user.client.invoices.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
