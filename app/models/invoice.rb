@@ -23,14 +23,6 @@ class Invoice < ActiveRecord::Base
                                                       association_name: :transitions)
   end
 
-  def self.transition_class
-    InvoiceTransition
-  end
-
-  def self.initial_state
-    :draft
-  end
-
   # optionally delegating some methods
   delegate :can_transition_to?, :transition_to!, :transition_to, :current_state,
           to: :state_machine
