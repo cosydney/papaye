@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admini', as: 'rails_admin'
   get 'registrations/after_sign_up_path_for'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "devise/registrations", invitations: "devise/invitations" }
