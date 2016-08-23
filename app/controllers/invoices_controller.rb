@@ -21,7 +21,7 @@ class InvoicesController < ApplicationController
   end
 
   def send_email
-    @user = User.where(email: @invoice.client).first
+    @user = User.where(email: @invoice.client.email).first
     if @user
 
       @invoice.send_invoice_by_email!(params[:text])
