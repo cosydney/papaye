@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
     @invoices = Invoice.freelance_invoices(current_user)
+    @activities = PublicActivity::Activity.where(owner: current_user)
   end
 
   # TODO create a new Invoice (new/create). After create redirect to index.

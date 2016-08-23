@@ -1,0 +1,2 @@
+<li> Invoice has been sent to <%= activity.trackable.client.first_name %> from <%= activity.trackable.client.company %> has been sent <div class="timestamp pull-right">  <%= time_ago_in_words(activity.created_at)%> ago </div></li>
+<!--  possibility to do it with parameters to 'timemachine' data -->
