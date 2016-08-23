@@ -68,6 +68,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
+    cocoon (1.2.9)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
@@ -243,6 +244,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  cocoon
   datetimepicker-rails!
   devise
   devise_invitable (~> 1.7.0)
