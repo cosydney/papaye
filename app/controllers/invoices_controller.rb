@@ -88,7 +88,7 @@ class InvoicesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
     # to set params, think about nested forms (need description and client attributes!)
-    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, :descriptions_attributes[:description, :amount, :unit, :vat_tax])
+    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, descriptions_attributes: [:description, :amount, :unit, :vat_tax])
   end
 
   def client_params
