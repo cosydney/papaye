@@ -3,11 +3,20 @@
   padding: 12px;
   li{
     color: grey;
+    opacity: 0.8;
     list-style: none;
     padding: 3px;
   }
   .timestamp{
   opacity: 0.4;
+  }
+  a{
+    color:grey;
+    opacity: 0.8;
+  &:hover{
+    opacity: 0.85;
+    text-decoration: none;
+    }
   }
 }
 
