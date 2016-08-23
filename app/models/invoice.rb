@@ -8,7 +8,7 @@ class Invoice < ActiveRecord::Base
   has_many :descriptions, dependent: :destroy
 
   before_destroy :destroy_activity
-  after_create :create_activity
+  after_create :create_activity_
   after_update :update_activity
 
   accepts_nested_attributes_for :client
@@ -52,7 +52,7 @@ class Invoice < ActiveRecord::Base
     log_activity :update
   end
 
-  def create_activity
+  def create_activity_
     log_activity :create
   end
 
