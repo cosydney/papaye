@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'registrations/after_sign_up_path_for'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "registrations", invitations: "invitations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "devise/registrations", invitations: "devise/invitations" }
 
 
   # The priority is based upon order of creation: first created -> highest priority.
