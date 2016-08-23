@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :send_email, :edit_email]
 
   # TODO show the freelancer the dashboard (/) rootpath when logged-in (see routes)
   def index
@@ -16,23 +16,32 @@ class InvoicesController < ApplicationController
     @user = User.new
   end
 
-  def create
-    @client = Client.where(company: client_params[:company], company_number: client_params[:company_number]).first
-    @invoice = Invoice.new(invoice_params.merge(freelancer_id: current_user.freelancer.id))
+  def edit_email
+  end
 
-    if @client
-      @invoice.client_id = @client.id
-      @invoice.save
-      UserMailer.send_invoice_client(@invoice.id).deliver_later
+  def send_email
+    @user = User.where(email: @invoice.client).first
+    if @user
+      @invoice.send_invoice_by_email!(params[:text])
+      current_user.freelancer.update(email_text: params[:text]) if params[:save] == '1'
     else
-      @client = Client.create(client_params)
-      @invoice.client_id = @client.id
-      @invoice.save
-      User.invite_client!({email: client_params[:email]}, current_user, {invoice_id: @invoice.id})
+      User.invite_client!({email: @invoice.client }, current_user, {invoice_id: @invoice.id, content: params[:text]})
     end
+    redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
+  end
 
+  def create
+    @client = Client.where(email: client_params[:email]).first
+    @client ||= Client.create!(client_params)
     update_user_client
-    redirect_to dashboard_path, notice: 'Invoice saved!'
+
+    @invoice = Invoice.create!(invoice_params.merge(freelancer_id: current_user.freelancer.id, client_id: @client.id))
+
+    if params[:commit] == "Preview & Send"
+      redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
+    else
+      redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"
+    end
   end
 
   # TODO show a specific Invoice. link_to back, edit
@@ -60,8 +69,12 @@ class InvoicesController < ApplicationController
 
   # TODO destroy a specific Invoice
   def destroy
+    @id = @invoice.id
     @invoice.destroy
-    redirect_to dashboard_path
+    @invoices = current_user.freelancer.invoices
+    respond_to do |format|
+      format.js
+    end
   end
 
 

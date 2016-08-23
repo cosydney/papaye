@@ -100,7 +100,8 @@
         </div>
         <%= f.input :invoice_terms, label: 'Invoice Terms' %>
       </div>
-    <%= f.button :submit, :class => 'btn-invoice' %>
+    <%= f.button :submit, value: "Preview & Send", :class => 'btn-invoice' %>
+    <%= f.button :submit, value: "Save", :class => 'btn-invoice' %>
   <% end %>
 
 </div>

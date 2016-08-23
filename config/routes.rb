@@ -28,7 +28,12 @@ Rails.application.routes.draw do
     resources :invoices, only: [:index, :show, :create]
   end
 
-  resources :invoices
+  resources :invoices do
+    member do
+      get :edit_email
+      post :send_email
+    end
+  end
   resources :pages
 
   # sidekiq so we authenticate users for them to be in the admin

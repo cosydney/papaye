@@ -1,8 +1,26 @@
 class Freelancer < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   has_many :invoices
-# black list approach for params
+  after_validation :set_email_text, on: :create
+
+  # black list approach for params
   def self.unprotected_attrs
     new.attributes.symbolize_keys.keys - [:id, :user_id]
   end
+
+
+  def set_email_text
+    self.email_text =
+    "Like we agreed you will find here a copy of the invoice to be paid.  Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Invictus.
+
+Look forward to start the mission
+ Thank you,
+#{full_name} "
+  end
+
+  def full_name
+    [first_name, last_name].join(" ")
+  end
+
+
 end

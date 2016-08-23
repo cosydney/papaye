@@ -1,0 +1,5 @@
+$("#<%= @id%>").remove();
+
+<% if @invoices.empty? %>
+  $(".no-invoice").removeClass("hidden");
+<% end %>

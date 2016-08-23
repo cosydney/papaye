@@ -2,7 +2,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :freelancer
   belongs_to :client
   has_many :transitions, class_name: "InvoiceTransition", autosave: false
-  has_many :descriptions
+  has_many :descriptions, dependent: :destroy
 
   accepts_nested_attributes_for :client
 
@@ -27,16 +27,12 @@ class Invoice < ActiveRecord::Base
           to: :state_machine
   # After the invoice gets created do:
 
-  private
 
-  def edit_email_before_sending
-
-
-  end
-
-  def send_invoice_by_email
+  def send_invoice_by_email!(text)
     # Calling method in user_mailer.rb, delivers later so user doesn't have to wait
-    UserMailer.send_invoice_client(self.id).deliver_later
+    UserMailer.send_invoice_client(self.id, text).deliver_later
+    self.email_sent_at = Time.now
+    save
   end
 
 end
