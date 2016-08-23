@@ -30,6 +30,7 @@ class InvoicesController < ApplicationController
       @user = User.invite_client!({ email: @invoice.client.email }, current_user, {invoice_id: @invoice.id, content: params[:text]})
       @invoice.client.update(user_id: @user.id)
     end
+    @invoice.transition_to("pending")
     redirect_to dashboard_path, notice: "Invoice sent to your client #{@invoice.client.first_name}!"
   end
 
