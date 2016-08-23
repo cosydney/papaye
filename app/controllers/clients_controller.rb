@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:edit, :update, :destroy]
+  # Disalloww client to edit freelancer
+  before_action :desauthorize_client, only:[:edit, :index]
 
   def edit
   end
@@ -31,6 +33,14 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(client.unprotected_attrs)
+  end
+
+  def desauthorize_client
+    # If the current user is not a freelancer, he gets redirected to the root page
+    # Or shoud the freelancer be able to edir the client?
+    unless current_user.client
+      redirect_to dashboard_path , alert: "You don't have the rights"
+    end
   end
 end
 
