@@ -29,8 +29,7 @@ class FreelancersController < ApplicationController
     @freelancer = current_user.freelancer
   end
 
-   def freelancer_params
-      # here the photos need to be at the end for some mystic reasons
-      params.require(:freelancer).permit(Freelancer.unprotected_attrs)
-    end
+  def freelancer_params
+    params.require(:freelancer).permit(Freelancer.unprotected_attrs)
+  end
 end

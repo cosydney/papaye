@@ -1,18 +1,39 @@
-<h1>Hi @client name</h1>
+<% current_user.client.invoices.each do |invoice| %>
+  <%= link_to invoice_path(invoice) do %>
+    <div class="invoice-wrapper" id="<%= invoice.id %>">
+     <div class="row">
+      <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div>
+      <div class="col-xs-6 col-md-2"> <%= invoice.freelancer.first_name %> <%= invoice.freelancer.last_name %> </div>
+      <div class="col-xs-5 col-md-2"> Kool_project</div>
+      <div class="col-xs-offset-1 col-xs-3 col-md-1 col-sm-offset-0"> <p>$300</p></div>
+      <div class="col-xs-3 col-md-1"> <i> <p>pending</p> </i></div>
+      <div class="col-xs-5 col-md-3"><%= invoice.due_date %></div>
+        <div class="col-xs-offset-7 col-xs-6 col-md-2 col-sm-offset-0">
+          <ul class="icons-inline">
+           <!--    <li>
 
-<% @invoices.each do |invoice| %>
-  <p> Invoice Nr.: <%= invoice.invoice_date %></p>
-  <p> Date: <%= invoice.invoice_date %></p>
-  <%= link_to "Show", invoice_path(invoice) %>
-<% end %>
-<br>
+                 <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="See details"></i>
 
-<%= link_to "Create Invoice", new_invoice_path %>
-<div>
-  <%= link_to "Dashboard", dashboard_path %>
-</div>
-<div>
-<%= link_to "Freelancer settings", edit_freelancer_path %>
-</div>
-
-
+              </li> -->
+            <li>
+             <%= link_to edit_invoice_path(invoice) do %>
+              <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Pay the invoice"></i>
+            <% end %>
+            </li>
+            <li>
+              <%= link_to edit_email_invoice_path(invoice) do %>
+              <i class="fa fa-envelope" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Send your invoice"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to invoice_path(invoice), method: :delete, remote: true,
+               data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete invoice"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>

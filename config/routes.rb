@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resource :freelancer
+  resource :client, only: [:show, :edit, :update, :destroy]
 
   namespace :client do
     resources :invoices, only: [:index, :show, :create]
