@@ -37,9 +37,9 @@ Rails.application.routes.draw do
   resources :pages
 
   # sidekiq so we authenticate users for them to be in the admin
-  # authenticate :user, lambda { |u| u.admin  } do
+  authenticate :user, lambda { |u| u.admin  } do
     mount Sidekiq::Web => '/sidekiq'
-  # end
+  end
 end
 
 

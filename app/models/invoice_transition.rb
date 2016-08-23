@@ -2,7 +2,7 @@ class InvoiceTransition < ActiveRecord::Base
   include Statesman::Adapters::ActiveRecordTransition
 
 
-  belongs_to :invoice, inverse_of: :invoice_transitions
+  belongs_to :invoice#, inverse_of: :invoice_transitions
 
   after_destroy :update_most_recent, if: :most_recent?
 

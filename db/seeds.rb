@@ -19,7 +19,7 @@ bob = Client.create!(
 )
 
 invoice = Invoice.create!(
-  freelancer_id: 23,
+  freelancer_id: 1,
   client_id: bob.id,
   invoice_date: Date.today,
   due_date: Date.today,
@@ -27,7 +27,7 @@ invoice = Invoice.create!(
   invoice_terms: "Pay fast"
 )
 invoice_bis = Invoice.create!(
-  freelancer_id: 23,
+  freelancer_id: 1,
   client_id: bob.id,
   invoice_date: Date.today,
   due_date: Date.today,

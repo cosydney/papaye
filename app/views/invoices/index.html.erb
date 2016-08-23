@@ -22,17 +22,18 @@
   <%= link_to invoice_path(invoice) do %>
     <div class="invoice-wrapper" id="<%= invoice.id %>">
      <div class="row">
-      <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div>
+      <!-- <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div> -->
       <div class="col-xs-6 col-md-2"> <%= invoice.client.first_name %> <%= invoice.client.last_name %> </div>
-      <div class="col-xs-5 col-md-2"> Kool_project</div>
-      <div class="col-xs-offset-1 col-xs-3 col-md-1 col-sm-offset-0"> <p>$300</p></div>
-      <div class="col-xs-3 col-md-1"> <i> <p>pending</p> </i></div>
-      <div class="col-xs-5 col-md-3"><%= invoice.due_date %></div>
+      <div class="col-xs-5 col-md-2"> <%= invoice.client.company %></div>
+      <div class="col-xs-offset-1 col-xs-3 col-md-1 col-sm-offset-0"> <p><%= rand(100..500) %>$</p></div>
+      <!-- TODO sydney change ruby interpolation to model maybe ?  -->
+      <div class="col-xs-3 col-md-1"> <i> <p><%= invoice.transitions[0].nil? ? "draft" : invoice.transitions[0].to_state  %></p> </i></div>
+      <div class="col-xs-6 col-md-4"><%= invoice.due_date.to_formatted_s(:long)  %></div>
         <div class="col-xs-offset-7 col-xs-6 col-md-2 col-sm-offset-0">
           <ul class="icons-inline">
-           <!--    <li>
+             <!--  <li>
 
-                 <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="See details"></i>
+                 <i class="fa fa-money" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="mark as paid"></i>
 
               </li> -->
             <li>
