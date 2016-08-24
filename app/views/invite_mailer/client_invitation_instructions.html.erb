@@ -609,9 +609,9 @@
 
                             <h1> <%= t('mailer.send-inv.header') %> <%= @invoice.client.last_name %></h1>
 
-                            <p><%= t('mailer.sent-inv.message') %><br>
+                            <p><%= @content %><br>
                             <br>
-                            <%= t('mailer.sent-inv.goodbye') %>
+                            <%#= t('mailer.sent-inv.goodbye') %>
                             <br>
                             <%= @fl_name %></p>
 

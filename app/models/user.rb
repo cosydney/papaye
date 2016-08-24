@@ -7,25 +7,22 @@ class User < ActiveRecord::Base
 
   attr_accessor :virtual_data, :invitation_instructions
 
-  has_one :freelancer
-  has_one :client
-  after_create :my_create_freelancer # unless :is_client # add if statement for client
+  has_one :freelancer, dependent: :destroy
+  has_one :client, dependent: :destroy
+  after_create :my_create_association, unless: proc { |u| u.client } # unless :is_client # add if statement for client
 
   def self.invite_client!(attributes={}, invited_by=nil, options={})
-    puts attributes
-    puts invited_by
-    puts options
-    self.invite!(attributes, invited_by, options) do |invitable|
-      invitable.invitation_instructions = :client_invitation_instructions
+    self.invite!(attributes, invited_by, options) do |user|
+      user.invitation_instructions = :client_invitation_instructions
+      user.build_client(email: user.email)
     end
   end
 
-
-  def my_create_freelancer
+  def my_create_association
     if virtual_data.nil?
-      self.create_freelancer
+      create_freelancer
     else
-      self.create_freelancer(
+      create_freelancer(
         first_name: self.virtual_data[:first_name],
         last_name: self.virtual_data[:last_name]
         )

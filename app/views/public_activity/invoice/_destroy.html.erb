@@ -1,0 +1,2 @@
+<li> <i class="fa fa-trash" aria-hidden="true" id="trash-icon"></i>
+Invoice of <%= activity.parameters[:client_name] %> <%= activity.parameters[:client_last_name] %> from  <%= activity.parameters[:company] %> has been deleted <div class="timestamp pull-right"> <%= time_ago_in_words(activity.created_at)%> ago </div></li>

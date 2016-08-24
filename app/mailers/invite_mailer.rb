@@ -2,6 +2,7 @@
 class InviteMailer < Devise::Mailer
   def invitation_instructions(record, token, options={})
     @invoice = Invoice.where(id: options[:invoice_id]).first
+    @content = options[:content]
     # if invoice is nil, it's because something went wrong
     return nil unless @invoice
     @token = token

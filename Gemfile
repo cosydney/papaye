@@ -14,6 +14,13 @@ gem 'sidekiq'
 gem 'sinatra'  # Dependency for the Sidekiq Dashboard
 gem 'sidekiq-failures'
 #  ---
+# Admin interface
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+#  ---
+# Newsfeed
+gem 'public_activity'
+
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -28,6 +35,7 @@ gem 'statesman', '~> 2.0', '>= 2.0.1'
 gem "parsley-rails"
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem "cocoon"
 
 group :development, :test do
   gem 'binding_of_caller'

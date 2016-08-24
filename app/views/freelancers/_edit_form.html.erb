@@ -1,32 +1,27 @@
-
 <%= simple_form_for current_user.freelancer,url: '/freelancer'  do |f|%>
-
-<%= f.error_notification %>
-
-  <div class="row">
-    <div class="col-md-7 col-md-offset-2 col-xs-12"><h2>Your details</h2>
-      <div class="inline-form">
-        <div id="first_name"> <%= f.input :first_name, placeholder: "Bob" %></div>
-        <div>     <%= f.input :last_name, placeholder:"Smith" %></div>
+  <%= f.error_notification %>
+    <div class="row">
+      <div class="col-md-7 col-md-offset-2 col-xs-12"><h2>Your details</h2>
+        <div class="inline-form">
+          <div id="first_name"> <%= f.input :first_name, placeholder: "Bob" %></div>
+          <div>     <%= f.input :last_name, placeholder:"Smith" %></div>
+        </div>
+      </div>
+      <div class="col-md-5 col-xs-12"><h2>Company details</h2>
+        <%= f.input :company_name, placeholder:"Joe's company" %>
+        <%= f.input :address, placeholder:"36 Willesden Lane, London NW6 7ST, UK" %>
+        <%= f.input :company_nr, placeholder:"06488522" %>
+        <%= f.input :vat, placeholder:"123456789" %></div>
+        <div class="col-md-5 col-xs-12">
+          <h2>Bank details</h2>
+          <%= f.input :iban, placeholder: "GB29 NWBK 6016 1331 9268 19" %>
+          <%= f.input :bank_nr, placeholder: "NWBK" %>
+          <%= f.input :branch_nr, placeholder: "12-34-56" %>
+        </div>
       </div>
     </div>
-    <div class="col-md-5 col-xs-12"><h2>Company details</h2>
-      <%= f.input :company_name, placeholder:"Joe's company" %>
-      <%= f.input :address, placeholder:"36 Willesden Lane, London NW6 7ST, UK" %>
-      <%= f.input :company_nr, placeholder:"06488522" %>
-      <%= f.input :vat, placeholder:"123456789" %></div>
-      <div class="col-md-5 col-xs-12">
-
-        <h2>Bank details</h2>
-        <%= f.input :iban, placeholder: "GB29 NWBK 6016 1331 9268 19" %>
-        <%= f.input :bank_nr, placeholder: "NWBK" %>
-        <%= f.input :branch_nr, placeholder: "12-34-56" %>
-      </div>
+  <div class="form-inputs">
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Save", class: "btn btn-invoice" %>
     </div>
-  </div>
-<div class="form-inputs">
-  <div class="form-actions text-center">
-    <%= f.button :submit, "Save", class: "btn btn-invoice" %>
-  </div>
-
-  <% end %>
+<% end %>

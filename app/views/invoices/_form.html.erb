@@ -42,45 +42,31 @@
 
       <hr>
 
-    <div class="invoice-descriptions">
-      <%= simple_fields_for :descriptions do |d| %>
-        <%= d.error_notification %>
+ <h4>Description:</h4>
 
-          <h4>Description:</h4>
+  <div id="descriptions">
+    <%= f.simple_fields_for :descriptions do |description| %>
+    <%= description.error_notification %>
+    <%= render 'description_fields', f: description %>
+    <% end %>
 
-          <div class="desc">
-            <div class="row">
-              <div class="col-xs-12 col-md-7">
-                <%= d.input :description, :input_html => {:data => { :'parsley-error-message' => "Description is required please!"}} %>
-              </div>
-              <div class="col-xs-12 col-md-1">
-                <%= d.input :unit, collection: 0..99, :input_html => {:data => { :'parsley-error-message' => "Digit!", :'parsley-type' => "digits", :'parsley-validation-threshold' => "1", :'parsley-trigger' => "keyup" }} %>
-              </div>
-              <div class="col-xs-12 col-md-1">
-                <%= d.input :price, :input_html => {:data => { :'parsley-error-message' => "Price is required please!", :'parsley-type' => "number" }} %>
-              </div>
-              <div class="col-xs-12 col-md-1">
-                <%= d.input :amount, :input_html => {:data => { :'parsley-error-message' => "Amount is required please!", :'parsley-type' => "number" }} %>
-              </div>
-              <div class="col-xs-12 col-md-1">
-                <%= d.input :vat_tax, :input_html => {:data => { :'parsley-error-message' => "VAT is required please!" }} %>
-              </div>
-              <div class="col-xs-12 col-md-1">
-                <div class="plus-button">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true" id="addNewDesc"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-      <% end %>
+      <div class="links">
+        <div class="plus-button">
+          <%= link_to_add_association f, :descriptions do %>
+            <span class="glyphicon glyphicon-plus desc-button" aria-hidden="true"></span>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-4 col-md-3">
-        <label>Subtotal</label>
-      </div>
-      <div class="col-xs-4 col-md-3 pull-right">
-        <label>TOTAL</label>
+    <div class="total-fields">
+      <div class="row">
+        <div class="col-xs-4 col-md-3">
+          <label>Subtotal</label>
+        </div>
+        <div class="col-xs-4 col-md-3 pull-right">
+          <label>TOTAL</label>
+        </div>
       </div>
     </div>
 
@@ -100,7 +86,8 @@
         </div>
         <%= f.input :invoice_terms, label: 'Invoice Terms' %>
       </div>
-    <%= f.button :submit, :class => 'btn-invoice' %>
+    <%= f.button :submit, value: "Edit email & Send", :class => 'btn-invoice' %>
+    <%= f.button :submit, value: "Save", :class => 'btn-invoice' %>
   <% end %>
 
 </div>
@@ -123,16 +110,16 @@
         showClose: true,
       });
       // Add a new field
-      $('#addNewDesc').click(function(event){
-        $('.invoice-descriptions').append('<div><input type="text" class="input-large" placeholder="Caption">'+
+  //     $('#addNewDesc').click(function(event){
+  //       $('.desc').append('<div><input type="text" class="input-large" placeholder="Caption">'+
 
-  '<button class="removeDesc" type="button">remove</button></div>');
-      });
+  // '<button class="removeDesc" type="button">remove</button></div>');
+  //     });
 
-      $("#addNewDesc").on('click', '.removeDesc', function(event){
-        $(this).closest('.invoice-descriptions').remove();
-      });
-    });
+  //     $("#addNewDesc").on('click', '.removeDesc', function(event){
+  //       $(this).closest('.invoice-descriptions').remove();
+  //     });
+  //   });
   </script>
 <% end %>
 

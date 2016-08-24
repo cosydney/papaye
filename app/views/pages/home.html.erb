@@ -4,6 +4,7 @@
     <div class="banner-text">
       <br>
       <h1><%= t('home.banner-title') %></h1>
+      <h2>Freelance can authorise their client credit card and charge them when their mission is finished</h2>
     </div>
     <div class="tutorial text-center container">
       <div class="row">
@@ -19,68 +20,76 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin" >
-        <h1>1</h1>
-        <h3><%= t('home.banner-box1-h') %></h3>
-        <p><%= t('home.banner-box1-p') %></p>
+        <div class="card-content">
+          <h1 class="text-center">1</h1>
+          <h3><%= t('home.banner-box1-h') %></h3>
+          <p><%= t('home.banner-box1-p') %></p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h1>2</h1>
-        <h3><%= t('home.banner-box2-h') %></h3>
-        <p><%= t('home.banner-box2-p') %></p>
+        <div class="card-content">
+          <h1 class="text-center">2</h1>
+          <h3><%= t('home.banner-box2-h') %></h3>
+          <p><%= t('home.banner-box2-p') %></p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
-        <h1>3</h1>
-        <h3><%= t('home.banner-box3-h') %></h3>
-        <p><%= t('home.banner-box3-p') %></p>
+        <div class="card-content">
+          <h1 class="text-center">3</h1>
+          <h3><%= t('home.banner-box3-h') %></h3>
+          <p><%= t('home.banner-box3-p') %></p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div id="why-wrapper">
-<h1 class="text-center" id="why"><%= t('home.banner-card-title') %></h1>
-<br>
+  <h1 class="text-center" id="why"><%= t('home.banner-card-title') %></h1>
+  <br>
 
-      <div class="container">
+  <div class="container">
+    <div class="col-xs-12 col-md-6">
+      <div class="two-box-margin">
+        <h3><%= t('home.banner-card1-h') %></h3>
+        <p><%= t('home.banner-card1-p') %></p>
+      </div></div>
+      <div class="col-xs-12 col-md-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
+
+    </div>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <%= image_tag 'onemorething.jpg', id: "stevejobs",class: "home-img" %>
+        </div>
         <div class="col-xs-12 col-md-6">
           <div class="two-box-margin">
-            <h3><%= t('home.banner-card1-h') %></h3>
-            <p><%= t('home.banner-card1-p') %></p>
-          </div></div>
-          <div class="col-xs-12 col-md-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
-
-        </div>
-        <br>
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <%= image_tag 'onemorething.jpg', id: "stevejobs",class: "home-img" %>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <div class="two-box-margin">
-                <h3><%= t('home.banner-card2-h') %></h3>
-                <p><%= t('home.banner-card2-p') %></p>
-              </div>
-            </div>
+            <h3><%= t('home.banner-card2-h') %></h3>
+            <p><%= t('home.banner-card2-p') %></p>
           </div>
         </div>
-</div>
+      </div>
+    </div>
+  </div>
 
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="card one-box-margin">
-                <h3><%= t('home.banner-description-h') %></h3>
-                <p><%= t('home.banner-description-p1') %></p>
-                <p><%= t('home.banner-description-p2') %></p>
-                <div class="cta">
-                 <%= link_to t('home.banner-description-btn'), new_user_registration_path,class: "btn btn-invoice"%>
-               </div>
-             </div>
-           </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card one-box-margin ">
+        <div class="card-content">
+          <h3 class="text-center"><%= t('home.banner-description-h') %></h3>
+          <p><%= t('home.banner-description-p1') %></p>
+          <p><%= t('home.banner-description-p2') %></p>
+          <div class="cta text-center">
+           <%= link_to t('home.banner-description-btn'), new_user_registration_path,class: "btn btn-invoice"%>
+         </div>
          </div>
        </div>
+     </div>
+   </div>
+ </div>

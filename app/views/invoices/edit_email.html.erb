@@ -1,0 +1,16 @@
+<h3>To: <%= @invoice.client.first_name %> <%= @invoice.client.email %></h3>
+<%= form_tag send_email_invoice_path(@invoice) do %>
+<h3>Subject: Invoice from <%= current_user.freelancer.first_name %></h3>
+
+<%= text_area_tag :text, current_user.freelancer.email_text %>
+<div class="checkbox"> <label for ="save">
+  <%= check_box_tag :save, 1, checked: true %>
+  <p>Save my email template for future reference</p>
+</label>
+</div>
+<div class="pull-right">
+<%= submit_tag "Send the invoice", class: 'btn btn-flashy' %>
+<% end %>
+</div>
+
+

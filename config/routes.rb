@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admini', as: 'rails_admin'
   get 'registrations/after_sign_up_path_for'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "registrations", invitations: "invitations" }
@@ -23,12 +24,18 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resource :freelancer
+  resource :client, only: [:show, :edit, :update, :destroy]
 
   namespace :client do
     resources :invoices, only: [:index, :show, :create]
   end
 
-  resources :invoices
+  resources :invoices do
+    member do
+      get :edit_email
+      post :send_email
+    end
+  end
   resources :pages
 
   # sidekiq so we authenticate users for them to be in the admin
