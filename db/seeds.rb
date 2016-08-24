@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Invoice.destroy_all
+
 
 bob = Client.create!(
   first_name: "Boris",

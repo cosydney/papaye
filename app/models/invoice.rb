@@ -61,7 +61,7 @@ class Invoice < ActiveRecord::Base
   def log_activity(type)
     create_activity(
       key: "invoice.#{type}",
-      owner: Proc.new{ |controller, model| controller.current_user },
+      owner: freelancer.user, # Proc.new{ |controller, model| controller.try(:current_user) || freelancer },
       parameters:{ client_name: client.first_name, client_last_name: client.last_name, company: client.company }
     )
   end

@@ -21,10 +21,14 @@
 <div class="notif-wrapper">
 <ul>
 <%= render_activities(@activities[0..5]) %>
-<div class="text-center">
-<%= link_to '#TODO#' do %>
-<p id="see-more">...See more activities...</p>
+<div>
+<%= link_to '#', id: "see-activities" do %>
+<p class="text-center see-more">...See more activities...</p>
 <% end %>
+<div class="hidden" id="activities">
+<%= render_activities(@activities[5..50]) %>
+<a href="#"> <p id="hide-activities" class="text-center see-more">...Hide activities...</p></a>
+</div>
 </div>
 
 </ul>
