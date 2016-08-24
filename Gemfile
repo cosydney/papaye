@@ -25,9 +25,15 @@ gem 'autoprefixer-rails'
 gem "omniauth-google-oauth2"
 gem 'statesman', '~> 2.0', '>= 2.0.1'
 
+# Stripe
+gem 'money-rails'
+
+# Invoice form validations
 gem "parsley-rails"
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+
+# Nested form
 gem "cocoon"
 
 group :development, :test do
