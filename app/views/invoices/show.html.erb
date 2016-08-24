@@ -3,5 +3,50 @@ TODO show of the invoice
 find me in view/invoices/show.html.erb
 <br>
 <hr>
+  <div class="nested-fields">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <label for="#">Description</label>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <label for="#">Unit</label>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <label for="#">Price</label>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <label for="#">Amount</label>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <label for="#">VAT</label>
+      </div>
+    </div>
+  </div>
+
+<% @invoice.descriptions.each do |description| %>
+
+  <div class="nested-fields">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <%= description.description %>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <%= description.unit %>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <%= humanized_money_with_symbol(description.price_cents) %>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <%= description.amount %>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <%= description.vat_tax %>
+      </div>
+
+   </div>
+
+ </div>
+
+<% end %>
 
 <h1 class="btn btn-invoice">  <%= link_to 'go back to dashboard', dashboard_path %></h1>

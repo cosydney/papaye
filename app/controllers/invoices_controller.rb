@@ -64,10 +64,18 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
+
+    # Need to do some refactoring here, but working!
+    descriptions = invoice_params[:descriptions_attributes].select{ |k, v| v['_destroy'] == "false" }
+    desc_arr_id = invoice_params[:descriptions_attributes].values.select{|h| h[:_destroy] == '1'}.map{|h| h[:id].to_i}
+    @invoice.descriptions.where(id: desc_arr_id).destroy_all
+
+    updated_invoice_params = invoice_params.merge!(descriptions_attributes: descriptions)
+
     @client = @invoice.client
     @client.update(client_params)
 
-    if @invoice.update(invoice_params)
+    if @invoice.update(updated_invoice_params)
       redirect_to dashboard_path, notice: 'Invoice has been updated.'
     else
       render :edit
@@ -94,7 +102,7 @@ class InvoicesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
     # to set params, think about nested forms (need description and client attributes!)
-    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, descriptions_attributes: [:description, :amount, :unit, :vat_tax])
+    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, descriptions_attributes: [:description, :amount, :unit, :vat_tax, :price, :id, :_destroy])
   end
 
   def client_params
