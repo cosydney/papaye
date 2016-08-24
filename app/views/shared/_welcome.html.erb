@@ -5,7 +5,7 @@
     <% if current_user.nil? %>
     <h1><%= t('shared.welcome-nav.not-signed') %></h1>
     <% else %>
-    <h1><%= t('dashboard') %></h1>
+    <h1 id="dashboard-title"><%= t('dashboard') %></h1>
     <% end %>
   </div>
   <!-- Burger for mobile version -->
