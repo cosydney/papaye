@@ -1,8 +1,32 @@
-TODO show of the invoice
+<div class="white-paper">
 
-find me in view/invoices/show.html.erb
-<br>
-<hr>
+  <div class="invoice-header">
+    <h3>INVOICE</h3>
+    <% if @invoice.freelancer.company_name %>
+      <h4> by <%= @invoice.freelancer.company_name %></h4>
+    <% else %>
+       <h4> by <%= @invoice.freelancer.first_name %> <%= @invoice.freelancer.last_name %></h4>
+    <% end %>
+  </div>
+
+  <div class="date-in-header">
+    <%= @invoice.invoice_date %>
+  </div>
+
+  <div class="subheader-to-client">
+    <p>INVOICE TO</p>
+    <% if @invoice.client.company %>
+      <h4> <%= @invoice.client.company %></h4>
+    <% else %>
+       <h4> <%= @invoice.client.first_name %> <%= @invoice.client.last_name %></h4>
+    <% end %>
+  </div>
+
+  <div class="subheader-total">
+    <h2>TOTAL $ !?</h2>
+    <p>due on <%= @invoice.due_date %></p>
+  </div>
+
   <div class="nested-fields">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -23,7 +47,7 @@ find me in view/invoices/show.html.erb
     </div>
   </div>
 
-<% @invoice.descriptions.each do |description| %>
+  <% @invoice.descriptions.each do |description| %>
 
   <div class="nested-fields">
     <div class="row">
@@ -43,10 +67,13 @@ find me in view/invoices/show.html.erb
         <%= description.vat_tax %>
       </div>
 
-   </div>
+    </div>
 
- </div>
+  </div>
 
-<% end %>
+  <% end %>
+
+</div>
+
 
 <h1 class="btn btn-invoice">  <%= link_to 'go back to dashboard', dashboard_path %></h1>
