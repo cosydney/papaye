@@ -1,5 +1,5 @@
 class Freelancer < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   has_many :invoices
   after_validation :set_email_text, on: :create
 
