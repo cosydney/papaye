@@ -7,8 +7,10 @@ class UserMailer < ApplicationMailer
   #
 
   # TODO welcoming users :)
-  def welcome
+  def welcome(user)
+    @user = user  # Instance variable => available in view
 
+    mail(to: @user.email, subject: 'Welcome to Papeye')
   end
 
   def edit_email_tbs

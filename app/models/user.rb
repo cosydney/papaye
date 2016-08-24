@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_one :freelancer, dependent: :destroy
   has_one :client, dependent: :destroy
   after_create :my_create_association, unless: proc { |u| u.client } # unless :is_client # add if statement for client
+  after_create :send_welcome_email, unless: proc { |u| u.client }
 
   def self.invite_client!(attributes={}, invited_by=nil, options={})
     self.invite!(attributes, invited_by, options) do |user|
@@ -46,6 +47,10 @@ class User < ActiveRecord::Base
     # Uncomment the section below if you want users to be created if they don't exist
     user = create_user_and_freelancer(data) unless user
     user
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_later
   end
 
   def is_client
