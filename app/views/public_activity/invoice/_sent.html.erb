@@ -1,0 +1,12 @@
+
+<% label = activity.parameters[:company] + " Invoice has been sent to " + activity.parameters[:client_name] + " " + activity.parameters[:client_last_name] %>
+
+<li>
+<i class="fa fa-paper-plane-o" aria-hidden="true" id= "paperplane-icon"></i>
+  <% if activity.trackable %>
+  <%= link_to label, invoice_path(activity.trackable) %>
+  <% else %>
+  <%= label %>
+  <% end %>
+  <div class="timestamp pull-right">  <%= time_ago_in_words(activity.created_at)%> ago </div></li>
+<!--  possibility to do it with parameters to 'timemachine' data -->

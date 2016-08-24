@@ -3,6 +3,8 @@ class Freelancer < ActiveRecord::Base
   has_many :invoices
   after_validation :set_email_text, on: :create
 
+
+
   # black list approach for params
   def self.unprotected_attrs
     new.attributes.symbolize_keys.keys - [:id, :user_id]
