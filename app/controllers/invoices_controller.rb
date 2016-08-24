@@ -92,7 +92,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-
   private
 
   def set_invoice

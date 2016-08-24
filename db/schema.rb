@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823150457) do
+ActiveRecord::Schema.define(version: 20160824143128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20160823150457) do
     t.string   "company"
     t.string   "company_number"
     t.string   "address"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "email"
+    t.string   "ClientStripeId"
+    t.string   "stripe_customer_id"
   end
 
   add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
@@ -71,9 +73,12 @@ ActiveRecord::Schema.define(version: 20160823150457) do
     t.integer  "bank_nr"
     t.integer  "branch_nr"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.text     "email_text"
+    t.string   "StripeSecretKey"
+    t.string   "stripe_secret_key"
+    t.string   "stripe_publishable_key"
   end
 
   add_index "freelancers", ["user_id"], name: "index_freelancers_on_user_id", using: :btree
