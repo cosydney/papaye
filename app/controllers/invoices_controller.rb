@@ -44,7 +44,7 @@ class InvoicesController < ApplicationController
 
     @invoice = Invoice.create!(invoice_params.merge(freelancer_id: current_user.freelancer.id, client_id: @client.id))
 
-    if params[:commit] == "Preview & Send"
+    if params[:commit] == "Edit email & Send"
       redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
     else
       redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"

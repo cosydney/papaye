@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
@@ -12,6 +13,7 @@ class User < ActiveRecord::Base
   after_create :my_create_association, unless: proc { |u| u.client } # unless :is_client # add if statement for client
 
   def self.invite_client!(attributes={}, invited_by=nil, options={})
+    Invoice.find(options[:invoice_id]).log_activity :sent
     self.invite!(attributes, invited_by, options) do |user|
       user.invitation_instructions = :client_invitation_instructions
       user.build_client(email: user.email)
@@ -54,10 +56,4 @@ class User < ActiveRecord::Base
   end
 end
 
-
-
-
-# invoice
-# belongs_to 'freelance', class_name :user
-# belongs_to 'client', class_name :user
 

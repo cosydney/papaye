@@ -56,8 +56,6 @@ class Invoice < ActiveRecord::Base
     log_activity :create
   end
 
-  protected
-
   def log_activity(type)
     create_activity(
       key: "invoice.#{type}",
