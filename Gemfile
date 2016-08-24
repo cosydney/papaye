@@ -34,6 +34,7 @@ gem 'statesman', '~> 2.0', '>= 2.0.1'
 
 # Stripe
 gem 'money-rails'
+gem 'stripe'
 
 # Invoice form validations
 gem "parsley-rails"
