@@ -609,12 +609,7 @@
 
                             <h1> <%= t('mailer.send-inv.header') %> <%= @invoice.client.last_name %></h1>
 
-                            <p><%= @content %><br>
-                            <br>
-                            <%#= t('mailer.sent-inv.goodbye') %>
-                            <br>
-                            <%= @fl_name %></p>
-
+                            <p><%= raw strip_tags(@content).nl2br %><br>
                         </td>
                     </tr>
                 </tbody></table>

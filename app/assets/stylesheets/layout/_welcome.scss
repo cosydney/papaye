@@ -37,13 +37,13 @@
   background-color: whitesmoke;
   width: 81%;
   z-index: 1030;
-  padding-bottom: 30px;
   box-shadow: 1px 1px 1px lightgray;
   h1{
     color: $brand-color;
     font-size: 40px;
     font-weight: bold;
     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
   }
 }
 

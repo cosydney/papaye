@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def signup
     @navbar =:top
   end
+
+  def contact
+
+  end
 end
