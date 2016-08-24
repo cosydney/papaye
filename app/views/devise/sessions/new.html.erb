@@ -2,17 +2,24 @@
 
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 <div class="form-inputs">
   <%= render "devise/shared/google" %>
-  <%= f.input :email, required: false, autofocus: true %>
-  <%= f.input :password, required: false %>
-  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#signup">Or sign up with email</button>
+  <div id="signup" class="collapse">
+  <br>
+
+    <%= f.input :email, required: false, autofocus: true %>
+    <%= f.input :password, required: false %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 </div>
-
-<div class="form-actions">
-  <%= f.button :submit, "Log in" %>
 </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
