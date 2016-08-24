@@ -2,7 +2,8 @@ $(function(){
   $(function () {
     $('.invoice-wrapper .fa').tooltip()
   });
-  $('#see-activities').click(function(){
+
+$('#see-activities').click(function(){
     $('#activities').removeClass("hidden")
     $(this).addClass('hidden')
   });
