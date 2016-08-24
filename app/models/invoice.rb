@@ -1,8 +1,15 @@
 class Invoice < ActiveRecord::Base
+  # Newsfeed gem
+  include PublicActivity::Model
+  # ----
   belongs_to :freelancer
   belongs_to :client
   has_many :transitions, class_name: "InvoiceTransition", autosave: false
   has_many :descriptions, dependent: :destroy
+
+  before_destroy :destroy_activity
+  after_create :create_activity_
+  after_update :update_activity
 
   accepts_nested_attributes_for :client
   accepts_nested_attributes_for :descriptions, reject_if: :all_blank
@@ -33,7 +40,29 @@ class Invoice < ActiveRecord::Base
     # Calling method in user_mailer.rb, delivers later so user doesn't have to wait
     UserMailer.send_invoice_client(self.id, text).deliver_later
     self.email_sent_at = Time.now
+    log_activity :sent
     save
   end
 
+  def destroy_activity
+    log_activity :destroy
+  end
+
+  def update_activity
+    log_activity :update
+  end
+
+  def create_activity_
+    log_activity :create
+  end
+
+  protected
+
+  def log_activity(type)
+    create_activity(
+      key: "invoice.#{type}",
+      owner: freelancer.user, # Proc.new{ |controller, model| controller.try(:current_user) || freelancer },
+      parameters:{ client_name: client.first_name, client_last_name: client.last_name, company: client.company }
+    )
+  end
 end

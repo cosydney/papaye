@@ -18,6 +18,9 @@ gem 'sidekiq-failures'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 #  ---
+# Newsfeed
+gem 'public_activity'
+
 
 gem 'sass-rails'
 gem 'jquery-rails'

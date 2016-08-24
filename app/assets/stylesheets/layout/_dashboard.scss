@@ -1,3 +1,42 @@
+.notif-wrapper{
+  box-shadow: 1px 1px 1px lightgray;
+  padding: 12px;
+  li{
+    color: grey;
+    opacity: 0.8;
+    list-style: none;
+    padding: 3px;
+  }
+  .timestamp{
+  opacity: 0.4;
+  }
+  #invoice-icon{
+    margin-left: -18px;
+  }
+  #paperplane-icon{
+    margin-left: -21px;
+  }
+  #trash-icon{
+    margin-left: -17px;
+  }
+  a{
+    color: grey;
+    opacity: 0.8;
+  &:hover{
+    opacity: 0.85;
+    text-decoration: none;
+    }
+  .see-more{
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-size: 11px;
+    color: lightgray;
+  }
+  }
+}
+
+
+
 .dashboard-wrapper{
   background-color: #f8f8f8;
   width: 100%;
@@ -6,6 +45,11 @@
   box-shadow: 1px 1px 1px lightgray;
   padding: 10px;
   margin-top: 120px;
+  img{
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px lightgray;
+  }
 }
 
 .invoice-wrapper{

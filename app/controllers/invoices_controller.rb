@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
     # redirect client to s/he's own dahsboard
     redirect_to client_invoices_path and return if current_user.client
     @invoices = Invoice.freelance_invoices(current_user)
+    @activities = PublicActivity::Activity.where(owner: current_user).order(created_at: 'desc')
   end
 
   # TODO create a new Invoice (new/create). After create redirect to index.
