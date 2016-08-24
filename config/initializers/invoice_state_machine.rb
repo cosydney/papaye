@@ -5,11 +5,13 @@ class InvoiceStateMachine
   state :pending
   state :captured
   state :paid
+  state :finished_mission
   state :refused
 
   transition from: :draft, to:[:pending]
   transition from: :pending, to:[:captured, :paid, :refused]
   transition from: :captured, to:[:paid, :refused]
+  transition from: :paid, to:[:finished_mission]
 
 
   ############ Possibility to set email after some transitions and some more stuff

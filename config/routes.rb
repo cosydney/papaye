@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admini', as: 'rails_admin'
   get 'registrations/after_sign_up_path_for'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "devise/registrations", invitations: "devise/invitations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: "registrations", invitations: "invitations" }
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resource :freelancer
+  resource :client, only: [:show, :edit, :update, :destroy]
 
   namespace :client do
     resources :invoices, only: [:index, :show, :create]
@@ -37,9 +39,9 @@ Rails.application.routes.draw do
   resources :pages
 
   # sidekiq so we authenticate users for them to be in the admin
-  # authenticate :user, lambda { |u| u.admin  } do
+  authenticate :user, lambda { |u| u.admin  } do
     mount Sidekiq::Web => '/sidekiq'
-  # end
+  end
 end
 
 

@@ -14,6 +14,10 @@ gem 'sidekiq'
 gem 'sinatra'  # Dependency for the Sidekiq Dashboard
 gem 'sidekiq-failures'
 #  ---
+# Admin interface
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+#  ---
 
 gem 'sass-rails'
 gem 'jquery-rails'

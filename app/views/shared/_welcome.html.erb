@@ -18,13 +18,21 @@
     <!-- normal collapsible navbar markup -->
     <br>
     <ul class="list-inline text-center">
-      <li><%= link_to t('btn-create-invoice'), new_invoice_path, class: "btn btn-invoice" %></li>
-      <br>
-      <li> <%= link_to t('dashboard'), dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
-      <li> <%= link_to t('settings'), edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
-      <li> <%= link_to t('profile'), freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
-      <li> <%= link_to t('logout'), destroy_user_session_path,  id: "navlink",method: :delete %></li>
-      <hr>
+      <% unless current_user.client %>
+        <li><%= link_to t('btn-create-invoice'), new_invoice_path, class: "btn btn-invoice" %></li>
+        <br>
+        <li> <%= link_to t('dashboard'), dashboard_path, id: "navlink", class: current_link(dashboard_path) %></li>
+        <li> <%= link_to t('settings'), edit_freelancer_path, id: "navlink", class: current_link(edit_freelancer_path) %></li>
+        <li> <%= link_to t('profile'), freelancer_path, id: "navlink", class: current_link(freelancer_path) %></li>
+        <li> <%= link_to t('logout'), destroy_user_session_path,  id: "navlink",method: :delete %></li>
+        <hr>
+      <% else %>
+        <li> <%= link_to t('dashboard'), client_invoices_path, id: "navlink", class: current_link(client_invoices_path) %></li>
+        <li> <%= link_to t('settings'), edit_client_path, id: "navlink", class: current_link(edit_client_path) %></li>
+        <li> <%= link_to t('profile'), client_path, id: "navlink", class: current_link(client_path) %></li>
+        <li> <%= link_to t('logout'), destroy_user_session_path,  id: "navlink",method: :delete %></li>
+        <hr>
+    <% end %>
     </ul>
   </div>
 </div>
