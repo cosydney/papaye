@@ -2,11 +2,9 @@
 <% label = activity.parameters[:company] + " Invoice has been sent to " + activity.parameters[:client_name] + " " + activity.parameters[:client_last_name] %>
 
 <li>
+<i class="fa fa-paper-plane-o" aria-hidden="true" id= "paperplane-icon"></i>
   <% if activity.trackable %>
-  <%= link_to invoice_path(activity.trackable) do %>
-  <i class="fa fa-paper-plane-o" aria-hidden="true" id= "paperplane-icon"></i>
-  <%= label %>
-  <% end %>
+  <%= link_to label, invoice_path(activity.trackable) %>
   <% else %>
   <%= label %>
   <% end %>
