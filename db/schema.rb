@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160824143128) do
     t.string   "invoice_terms"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "email"
     t.datetime "email_sent_at"
   end
 

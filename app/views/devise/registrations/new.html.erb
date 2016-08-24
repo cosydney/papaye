@@ -7,17 +7,23 @@
 
 <div class="form-inputs">
  <%= render "devise/shared/google" %>
- <p class="text-center">Or sign up with email</p>
- <br>
 
-<%= f.input :email, required: true, autofocus: true %>
-<%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-<%= f.input :password_confirmation, required: true %>
-</div>
+ <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#signup">Or sign up with email</button>
+ <div id="signup" class="collapse">
+  <br>
+
+  <%= f.input :email, required: true, autofocus: true %>
+  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+  <%= f.input :password_confirmation, required: true %>
+
 
 <div class="form-actions">
-<%= f.button :submit, "Sign up" %>
+  <%= f.button :submit, "Sign up" %>
 </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+
+
+</div>

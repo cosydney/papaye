@@ -86,6 +86,7 @@
         </div>
         <%= f.input :invoice_terms, label: 'Invoice Terms' %>
       </div>
+      <!-- Warning ! if you change Edit email & send OR Save from below make sure to impact changes in the invoices_controller  -->
     <%= f.button :submit, value: "Edit email & Send", :class => 'btn-invoice' %>
     <%= f.button :submit, value: "Save", :class => 'btn-invoice' %>
   <% end %>
