@@ -63,7 +63,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "invoice #{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
+        render pdf: "invoice_#{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
       end
     end
 
