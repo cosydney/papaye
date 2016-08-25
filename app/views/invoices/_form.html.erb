@@ -42,6 +42,23 @@
 
 <hr>
 
+<h4>Description:</h4>
+
+<div id="descriptions">
+  <%= f.simple_fields_for :descriptions do |description| %>
+  <%= description.error_notification %>
+  <%= render 'description_fields', f: description %>
+  <% end %>
+
+  <div class="links">
+    <div class="plus-button">
+      <%= link_to_add_association f, :descriptions do %>
+      <span class="glyphicon glyphicon-plus desc-button" aria-hidden="true" id='add-description'></span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="total-fields">
   <div class="row">
     <div class="col-xs-4 col-md-3">
@@ -58,13 +75,6 @@
 <hr>
 
 <div class="invoice-info">
-  <h4>Invoice info:</h4>
-  <div id="descriptions">
-    <%= f.simple_fields_for :descriptions do |description| %>
-    <%= description.error_notification %>
-    <%= description.input :project_description, label: 'Project description' %>
-    <%= render 'description_fields', f: description %>
-    <% end %>
 
   <%= f.input :invoice_nr, label: 'Invoice number' %>
   <div class='row datetimerange'>
