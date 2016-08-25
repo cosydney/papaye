@@ -84,7 +84,6 @@ def pay(params)
     end
 
     if charge # TODO if charge is successful
-      byebug
       self.transition_to!("paid")
       self.update(payment: charge.to_json)
       return true

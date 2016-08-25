@@ -15,11 +15,13 @@
                  <i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="See details"></i>
 
               </li> -->
-            <li>
-             <%= link_to client_invoices_path do %>
-              <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Pay the invoice"></i>
+            <% if invoice.current_state == "pending" %>
+              <li>
+               <%= link_to client_invoices_path do %>
+                <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Pay the invoice"></i>
+              <% end %>
+              </li>
             <% end %>
-            </li>
           </ul>
         </div>
       </div>

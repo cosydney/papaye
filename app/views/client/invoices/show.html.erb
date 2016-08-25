@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <h1>Show</h1>
 <p> Invoice Nr.: <%= @invoice.invoice_date %></p>
 <p> Date: <%= @invoice.invoice_date %></p>
@@ -7,23 +7,25 @@
 <br>
 <p><%= link_to "Dashboard", dashboard_path %></p>
 
-<div class="row">
-  <div class="col-md-6 col-xs-12">
-    <%= form_tag client_invoice_payment_path(@invoice) do %>
-      <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= @invoice.freelancer.stripe_publishable_key %>"
-      data-amount="<%= @invoice.descriptions.first.price_cents%>"
-      data-name="Demo Site"
-      data-description="Widget"
-      data-image="/img/documentation/checkout/marketplace.png"
-      data-locale="auto"
-      data-zip-code="true"
-      data-currency="eur" >
-    </script>
-  <% end %>
+<% if @invoice.current_state == "pending" %>
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <%= form_tag client_invoice_payment_path(@invoice) do %>
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= @invoice.freelancer.stripe_publishable_key %>"
+        data-amount="<%= @invoice.descriptions.first.price_cents%>"
+        data-name="Demo Site"
+        data-description="Widget"
+        data-image="/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-zip-code="true"
+        data-currency="eur" >
+      </script>
+    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <%= render 'invoices/invoice_show' %>
 
