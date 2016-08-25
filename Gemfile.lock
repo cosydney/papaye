@@ -304,6 +304,8 @@ GEM
     unf_ext (0.0.7.2)
     warden (1.2.6)
       rack (>= 1.0)
+    wicked_pdf (1.0.6)
+    wkhtmltopdf-binary (0.12.3)
 
 PLATFORMS
   ruby
@@ -346,6 +348,8 @@ DEPENDENCIES
   statesman (~> 2.0, >= 2.0.1)
   stripe
   uglifier
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.3.1p112

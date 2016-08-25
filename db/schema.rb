@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825143048) do
+
+ActiveRecord::Schema.define(version: 20160824144413) do
+>>>>>>> b8e283e042f2f9f0b27ed98e7bd19a68e9f0e55f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,9 +57,10 @@ ActiveRecord::Schema.define(version: 20160825143048) do
     t.string   "unit"
     t.float    "amount"
     t.float    "vat_tax"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "price_cents", default: 0, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "price_cents",         default: 0, null: false
+    t.string   "project_description"
   end
 
   add_index "descriptions", ["invoice_id"], name: "index_descriptions_on_invoice_id", using: :btree
