@@ -20,6 +20,10 @@ gem 'rails_admin', '>= 1.0.0.rc'
 #  ---
 # Newsfeed
 gem 'public_activity'
+# PDF downloader from html file
+gem 'wicked_pdf'
+# wrapper for wkhtmltopdf (part of the pdf downloader)
+gem 'wkhtmltopdf-binary'
 
 
 gem 'sass-rails'
