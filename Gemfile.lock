@@ -290,6 +290,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
+    wicked_pdf (1.0.6)
+    wkhtmltopdf-binary (0.12.3)
 
 PLATFORMS
   ruby
@@ -331,6 +333,8 @@ DEPENDENCIES
   spring
   statesman (~> 2.0, >= 2.0.1)
   uglifier
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.3.1p112

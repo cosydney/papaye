@@ -54,6 +54,16 @@ class InvoicesController < ApplicationController
   # TODO show a specific Invoice. link_to back, edit
   def show
     @invoice = Invoice.find(params[:id])
+    # redirect cleint to own invoice show
+    redirect_to client_invoice_path(@invoice) and return if current_user.client
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "invoice #{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
+      end
+    end
+
   end
 
   # TODO edit an already existing Invoice (edit/update). Afterward redirect to index
