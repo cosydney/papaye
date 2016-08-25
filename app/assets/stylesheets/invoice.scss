@@ -1,5 +1,33 @@
+.white-paper{
+  background-color: white;
+  margin: 30px 20px;
+  padding: 40px 60px;
+  position: relative;
+    h5{
+      font-weight: 300;
+      color: $gray-light;
+      margin: 0;
+    }
+}
+.inv-header{
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+.inv-summary {
+  padding-bottom: 50px;
+}
+.nested-fields-header{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.margin-description{
+  margin-bottom: 50px;
+}
+.inv-info{
+  margin-bottom: 50px;
+}
 .invoice-wrapper{
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .index-inline{
   li{

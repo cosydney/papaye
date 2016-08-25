@@ -47,6 +47,7 @@
   <div id="descriptions">
     <%= f.simple_fields_for :descriptions do |description| %>
     <%= description.error_notification %>
+    <%= description.input :project_description, label: 'Project description' %>
     <%= render 'description_fields', f: description %>
     <% end %>
 
