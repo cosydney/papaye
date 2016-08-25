@@ -1,4 +1,100 @@
 
+<% content_for(:after_js) do %>
+<script>
+  $(function(){
+
+    var calculateAmount = function(descriptionId){
+      $('#invoice_descriptions_attributes_'+ descriptionId +'_amount').val(unit*price)
+    }
+
+    var unit = 1, price = 0, vat = 20, descriptionIndex = 0, amount = 0;
+
+    var attachCalculator = function(descriptionIndex){
+      // giving unit 1
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_unit').val(unit);
+      // giving price 0 as default;
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_price').val(price);
+      // giving VAT tax 20% by default
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_vat_tax').val(vat);
+      // givint amount 0 by default
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_amount').val(amount);
+      //
+      calculateAmount();
+      // disabling amount to be edited
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_amount').attr("disabled", "disabled");
+
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_unit').change(function(){
+
+        unit = $(this).val();
+        calculateAmount(descriptionIndex);
+        totalCalculatorWriter(totalCalculator());
+
+      });
+      $('#invoice_descriptions_attributes_' + descriptionIndex + '_price').keyup(function(){
+       price =$(this).val();
+       calculateAmount(descriptionIndex);
+       totalCalculatorWriter(totalCalculator());
+       // repeating the process for new descriptions
+       // First listening to the click of adding a description
+     });
+    };
+
+
+    attachCalculator(descriptionIndex);
+    // -------------- event handler for additional decriptions ---------------
+
+    $('#descriptions > div.links').on('DOMNodeInserted', function(e){
+      var descriptionId = $('.links .nested-fields').last().find('label').first().attr('for').match(/\d+/)[0];
+
+      attachCalculator(descriptionId);
+    });
+
+
+
+// ------------ GETTING TOTAL amounts and all _________
+var totalCalculator = function(){
+  var total = 0, i = 0 , limit = $("[name$='amount]']").length ;
+  var totalht = 0;
+  var amounts = $("[name$='[amount]']");
+  var vats = $("[name$='vat_tax]']");
+
+
+  for(i; i < limit; i++ ){
+    var currentAmounts = parseInt($(amounts[i]).val());
+    var currentVat = parseInt($(vats[i]).val());
+
+    total = total + currentAmounts +
+    ( currentAmounts * currentVat / 100 );
+
+    totalht = totalht + currentAmounts ;
+  };
+  return ({total: total, totalht: totalht});
+};
+
+var totalCalculatorWriter = function(totals){
+  $('#subtotal').val(totals.totalht);
+  console.log(totals.totalht)
+  $('#total').val(totals.total);
+};
+
+$('#descriptions').on('DOMNodeRemoved', function(e){
+  var totals = totalCalculator();
+
+  var deleted_total = parseInt($(e.target).find("[name$='amount]']")[0].value) ;
+  var vat = parseInt($(e.target).find("[name$='vat_tax]']")[0].value) ;
+  totals.totalht = totals.totalht - deleted_total;
+  totals.total = totals.total - (deleted_total + deleted_total * vat / 100);
+
+  totalCalculatorWriter(totals);
+// appeller ma fonction pour ecrire mon total
+});
+
+});
+
+
+
+</script>
+<% end %>
 
 <div class="wrapper">
   <div class="container-fluid">
