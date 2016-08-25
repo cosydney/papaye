@@ -59,31 +59,42 @@ class Invoice < ActiveRecord::Base
 # ------------------------------- STRIPE ---------------------------------------
 
 def pay(params)
-   @amount_cents = @order.amount_cents
+   @price_cents = self.descriptions.last.price_cents
 
-    customer = Stripe::Customer.create(
-      source: params[:stripeToken],
-      email:  params[:stripeEmail]
-    )
+  if self.current_state == "pending"
+    charge = using_stripe(self.freelancer) do
+      # if self.client.stripe_customer_id.empty?
 
-    charge = Stripe::Charge.create(
-      customer:     customer.id,   # You should store this customer id and re-use it.
-      amount:       @amount_cents, # in cents
-      description:  "Payment for invoice #{@invoice.invoice_nr} to client #{@invoice.client.first_name}",
-      currency:     'eur'
-    )
+      #   customer = Stripe::Customer.create(
+      #     source: params[:stripeToken],
+      #     email:  params[:stripeEmail]
+      #     )
+      #   self.client.update(stripe_customer_id: customer.id)
+      # end
 
-    @order.update(payment: charge.to_json, state: 'paid')
-    redirect_to order_path(@order)
+      Stripe::Charge.create(
+        # customer:     self.client.stripe_customer_id,   # You should store this customer id and re-use it.
+        # Send the source token instead of the customer id.
+        # Doesn't store the customers on the Stripe platform
+        source: params[:stripeToken],
+        amount:       @price_cents, # in cents
+        description:  "Payment for invoice #{self.invoice_nr} to client #{self.client.first_name}",
+        currency:     'eur'
+        )
+    end
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_order_payment_path(@order)
+    if charge # TODO if charge is successful
+      byebug
+      self.transition_to!("paid")
+      self.update(payment: charge.to_json)
+      return true
+    end
+  end
 end
 
 # ------------------------------------------------------------------------------
 
-  protected
+  #protected
 
   def log_activity(type)
     create_activity(

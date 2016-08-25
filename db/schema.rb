@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824143128) do
+ActiveRecord::Schema.define(version: 20160825143048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 20160824143128) do
     t.string   "invoice_terms"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "email"
     t.datetime "email_sent_at"
+    t.text     "payment"
   end
 
   add_index "invoices", ["client_id"], name: "index_invoices_on_client_id", using: :btree

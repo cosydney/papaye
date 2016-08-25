@@ -8,6 +8,20 @@
 
 <div class="row">
   <div class="col-md-6 col-xs-12">
-    <button type="button" class="btn-invoice-dark">Pay with stripe</button>
+    <%= form_tag client_invoice_payment_path(@invoice) do %>
+      <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= @invoice.freelancer.stripe_publishable_key %>"
+      data-amount="<%= @invoice.descriptions.first.price_cents%>"
+      data-name="Demo Site"
+      data-description="Widget"
+      data-image="/img/documentation/checkout/marketplace.png"
+      data-locale="auto"
+      data-zip-code="true"
+      data-currency="eur" >
+    </script>
+  <% end %>
   </div>
 </div>
+
+

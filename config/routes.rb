@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :client do
     resources :invoices, only: [:index, :show, :create] do
       # -------------- STRIPE ----------------
-      resource :payment, only: [:create]
+      resource :payment, only: [:create, :new]
     end
   end
 
