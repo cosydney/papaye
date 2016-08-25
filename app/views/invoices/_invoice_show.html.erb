@@ -1,0 +1,306 @@
+<div class="white-paper">
+
+
+
+  <!-- HEADER ROW ---------------------------------- -->
+
+  <div class="inv-header">
+    <h3>INVOICE</h3>
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <% if @invoice.freelancer.company_name %>
+          <h4> by <%= @invoice.freelancer.company_name %></h4>
+        <% else %>
+          <h4> by <%= @invoice.freelancer.first_name %> <%= @invoice.freelancer.last_name %></h4>
+       <% end %>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <%= @invoice.invoice_date %>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SUMMARY ROW ---------------------------------- -->
+
+  <div class="inv-summary row">
+    <div class="hidden-xs hidden-sm col-md-12">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+          <h4>INVOICE TO</h4>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <h4> $ TOTAL </h4>
+        </div>
+      </div>
+    </div><!-- hidden-xs col-sm-12 -->
+    <div class="inv-sum-client col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-md-8">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <strong>INVOICE TO</strong>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <% if @invoice.client.company %>
+                <h4> <%= @invoice.client.company %></h4>
+              <% else %>
+                 <h4> <%= @invoice.client.first_name %> <%= @invoice.client.last_name %></h4>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <strong> $TOTAL </strong>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <h5>due on <%= @invoice.due_date %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- inv-sum-client col-xs-12 -->
+  </div><!-- inv-summary row -->
+
+
+
+
+
+  <!-- DESCRIPTION ROW ---------------------------------- -->
+
+  <div class="inv-description row">
+    <div class="nested-fields-header hidden-xs hidden-sm col-md-12">
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <h5>DESCRIPTION</h5>
+        </div>
+        <div class="col-xs-12 col-md-1">
+          <h5>UNIT </h5>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <h5>PRICE</h5>
+        </div>
+        <div class="col-xs-12 col-md-1">
+          <h5>AMOUNT</h5>
+        </div>
+        <div class="col-xs-12 col-md-1">
+          <h5>VAT</h5>
+        </div>
+      </div>
+    </div><!-- nested-fields-header hidden-xs col-sm-12 -->
+    <% @invoice.descriptions.each do |description| %>
+      <div class="nested-fields col-xs-12">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <div class="row" >
+              <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+                <h5>DESCRIPTION</h5>
+              </div>
+              <div class="col-xs-6 col-md-12">
+                <%= description.description %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-1">
+            <div class="row">
+              <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+                <h5>UNIT</h5>
+              </div>
+              <div class="col-xs-6 col-md-12">
+                <%= description.unit %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-2">
+            <div class="row">
+              <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+                <h5>PRICE</h5>
+              </div>
+              <div class="col-xs-6 col-md-12">
+                <%= humanized_money_with_symbol(description.price_cents) %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-1">
+            <div class="row">
+              <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+                <h5>AMOUNT</h5>
+              </div>
+              <div class="col-xs-6 col-md-12">
+                <%= description.amount %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-1">
+            <div class="row">
+              <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+                <h5>VAT</h5>
+              </div>
+              <div class="col-xs-6 col-md-12">
+                <%= description.vat_tax %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- nested-fields col-xs-12 -->
+    <% end %>
+    <div class="nested-fields col-xs-12">
+      <div class="row margin-description">
+      <div class="col-xs-12 col-md-11"> <hr> </div>
+        <div class="col-xs-6 col-md-6">
+          <h5>TOTAL</h5>
+        </div>
+        <div class="hidden-xs hidden-sm">
+          <div class="col-md-1"></div>
+          <div class="col-md-2"></div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="col-xs-6 col-md-1">
+          <p><strong>$ 20,0</strong></p>
+        </div>
+      </div>
+    </div><!-- nested-fields col-xs-12 -->
+  </div><!-- inv-description row -->
+
+
+
+
+
+
+
+  <!-- INFO ROW ---------------------------------- -->
+  <div class="inv-info row">
+
+    <div class="nested-fields-header col-xs-12">
+      <div class="row">
+        <div class="hidden-xs hidden-sm col-md-12">
+          <div class="row">
+            <div class="col-xs-12 col-md-5">
+              <h5>INVOICE BY</h5>
+            </div>
+            <div class="col-xs-12 col-md-2">
+              <h5>INVOICE DATE</h5>
+            </div>
+            <div class="col-xs-12 col-md-2">
+              <h5>DUE DATE</h5>
+            </div>
+            <div class="col-xs-12 col-md-3">
+              <h5>PAYMENT DETAILS</h5>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row -->
+    </div><!-- nested-fields col-xs-12 -->
+
+    <div class="nested-fields col-xs-12">
+      <div class="row">
+        <div class="col-xs-12 col-md-5">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>INVOICE BY</h5>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <% if @invoice.freelancer.company_name %>
+                <p><%= @invoice.freelancer.company_name %></p>
+              <% else %>
+                 <p><%= @invoice.freelancer.first_name %><%= @invoice.freelancer.last_name %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>INVOICE DATE</h5>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <p><%= @invoice.invoice_date %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>DUE DATE</h5>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <p><%= @invoice.due_date %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>PAYMENT DETAILS</h5>
+            </div>
+            <div class="col-xs-12 col-md-3">
+              <% if @invoice.freelancer.bank_nr %>
+                 <p><%= @invoice.freelancer.bank_nr %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- row -->
+    </div><!-- nested-fields col-xs-12 -->
+
+    <div class="nested-fields-header col-xs-12">
+      <div class="row">
+        <div class="hidden-xs hidden-sm col-md-12">
+        <div class="col-xs-12 col-md-12"><br></div>
+          <div class="row">
+            <div class="col-xs-12 col-md-5">
+              <h5></h5>
+            </div>
+            <div class="col-xs-12 col-md-2">
+              <h5>INVOICE NUMBER</h5>
+            </div>
+            <div class="col-xs-12 col-md-5">
+              <h5>INVOICE TERMS</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- nested-fields col-xs-12 -->
+
+
+
+
+    <div class="nested-fields col-xs-12">
+      <div class="row">
+        <div class="hidden-xs hidden-sm col-md-5" >
+
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>INVOICE NUMBER</h5>
+            </div>
+            <div class="col-xs-6 col-md-2">
+              <p><%= @invoice.invoice_nr %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-5">
+          <div class="row">
+            <div class="col-xs-6 visible-xs-inline-block visible-sm-inline-block">
+              <h5>INVOICE TERMS</h5>
+            </div>
+            <div class="col-xs-6 col-md-12">
+              <p><%= @invoice.invoice_terms %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- nested-fields col-xs-12 -->
+
+  </div><!-- inv-info row -->
+
+
+
+</div><!-- white-paper -->
