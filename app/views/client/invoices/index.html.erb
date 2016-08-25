@@ -1,5 +1,5 @@
 <% current_user.client.invoices.each do |invoice| %>
-  <%= link_to invoice_path(invoice) do %>
+  <%= link_to client_invoice_path(invoice) do %>
     <div class="invoice-wrapper" id="<%= invoice.id %>">
      <div class="row">
       <div class="col-xs-1 col-md-1"> <%= check_box('invoice', 'validated')  %> </div>
@@ -16,20 +16,9 @@
 
               </li> -->
             <li>
-             <%= link_to edit_invoice_path(invoice) do %>
+             <%= link_to client_invoices_path do %>
               <i class="fa fa-credit-card" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Pay the invoice"></i>
             <% end %>
-            </li>
-            <li>
-              <%= link_to edit_email_invoice_path(invoice) do %>
-              <i class="fa fa-envelope" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Send your invoice"></i>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to invoice_path(invoice), method: :delete, remote: true,
-               data: { confirm: 'Are you sure?' } do %>
-                <i class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete invoice"></i>
-              <% end %>
             </li>
           </ul>
         </div>
