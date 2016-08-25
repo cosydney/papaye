@@ -57,6 +57,7 @@ class InvoicesController < ApplicationController
     # redirect cleint to own invoice show
     redirect_to client_invoice_path(@invoice) and return if current_user.client
 
+    # Create PDF
     respond_to do |format|
       format.html
       format.pdf do

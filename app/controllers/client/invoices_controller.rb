@@ -10,6 +10,14 @@ class Client::InvoicesController < ApplicationController
 
   # TODO show a specific Invoice. link_to back, edit
   def show
+
+    # Create PDF
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "invoice #{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   private
