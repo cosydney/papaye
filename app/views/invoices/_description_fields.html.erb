@@ -1,17 +1,17 @@
 
 
 <div class="nested-fields">
-<div class="row">    <div class="col-xs-12 col-md-6">
+<div class="row">    <div class="col-xs-12 col-md-5">
     <%= f.input :description, :input_html => {:data => { :'parsley-error-message' => "Description is required please!"}} %>
     </div>
     <div class="col-xs-12 col-md-1">
       <%= f.input :unit, collection: 0..99, :input_html => {:data => { :'parsley-error-message' => "Digit!", :'parsley-type' => "digits", :'parsley-validation-threshold' => "1", :'parsley-trigger' => "keyup" }} %>
     </div>
-    <div class="col-xs-12 col-md-1">
-      <%= f.input :price, :input_html => {:data => { :'parsley-error-message' => "Price is required please!", :'parsley-type' => "number" }} %>
+    <div class="col-xs-12 col-md-2">
+      <%= f.input :price, :input_html => {:data => { :'parsley-error-message' => "Price is required please!", :'parsley-type' => "text" }} %>
     </div>
-    <div class="col-xs-12 col-md-1">
-      <%= f.input :amount, :input_html => {:data => { :'parsley-error-message' => "Amount is required please!", :'parsley-type' => "number" }} %>
+    <div class="col-xs-12 col-md-2">
+      <%= f.input :amount, :input_html => {:data => { :'parsley-error-message' => "Amount is required please!", :'parsley-type' => "text" }} %>
     </div>
     <div class="col-xs-12 col-md-1">
       <%= f.input :vat_tax, :input_html => {:data => { :'parsley-error-message' => "VAT is required please!" }} %>
