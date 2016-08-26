@@ -60,7 +60,7 @@ en:
       team: 'The Team'
       copy-right: 'Made by Freelancers for Freelancers © 2016 papaye.co'
     welcome-nav:
-      powered: 'Powered by Invictus ©'
+      powered: 'Powered by Papaye ©'
       not-signed: 'Welcome please sign in'
   mailer:
     send-inv:
@@ -68,6 +68,6 @@ en:
       header: 'Dear Mrs. / Ms. '
       message: 'Like we agreed you will find here a copy of the invoice to be paid.   Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Invictus.'
       goodbye: 'I look forward to start the mission,'
-      copy-r: 'Copyright © 2016 Invictus, All rights reserved.'
-      made: 'Made by Invictus with <3'
+      copy-r: 'Copyright © 2016 Papaye, All rights reserved.'
+      made: 'Made by Papaye with <3'
       mailing: 'Our mailing address is:'
