@@ -56,6 +56,45 @@ class Invoice < ActiveRecord::Base
     log_activity :create
   end
 
+# ------------------------------- STRIPE ---------------------------------------
+
+def pay(params)
+   @price_cents = self.descriptions.last.price_cents
+
+  if self.current_state == "pending"
+    charge = using_stripe(self.freelancer) do
+      # if self.client.stripe_customer_id.empty?
+
+      #   customer = Stripe::Customer.create(
+      #     source: params[:stripeToken],
+      #     email:  params[:stripeEmail]
+      #     )
+      #   self.client.update(stripe_customer_id: customer.id)
+      # end
+
+      Stripe::Charge.create(
+        # customer:     self.client.stripe_customer_id,   # You should store this customer id and re-use it.
+        # Send the source token instead of the customer id.
+        # Doesn't store the customers on the Stripe platform
+        source: params[:stripeToken],
+        amount:       @price_cents, # in cents
+        description:  "Payment for invoice #{self.invoice_nr} to client #{self.client.first_name}",
+        currency:     'eur'
+        )
+    end
+
+    if charge # TODO if charge is successful
+      self.transition_to!("paid")
+      self.update(payment: charge.to_json)
+      return true
+    end
+  end
+end
+
+# ------------------------------------------------------------------------------
+
+  #protected
+
   def log_activity(type)
     create_activity(
       key: "invoice.#{type}",
