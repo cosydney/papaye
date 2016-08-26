@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20160825143048) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "email"
-    t.string   "ClientStripeId"
     t.string   "stripe_customer_id"
   end
 
@@ -77,7 +76,6 @@ ActiveRecord::Schema.define(version: 20160825143048) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.text     "email_text"
-    t.string   "StripeSecretKey"
     t.string   "stripe_secret_key"
     t.string   "stripe_publishable_key"
   end
