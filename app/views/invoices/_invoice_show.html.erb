@@ -33,9 +33,10 @@
           <% total = [] %>
           <%  @invoice.descriptions.all.each do |d| total << d.price_cents end %>
           <%   total.inject(0){|sum, x| sum + x } %>
-          <%=  total %>
-            TOTAL </h4>
-          }
+          <%#=  total[0] %>
+
+          2,500 € TOTAL </h4>
+
         </div>
       </div>
     </div><!-- hidden-xs col-sm-12 -->
