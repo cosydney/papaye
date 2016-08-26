@@ -33,10 +33,10 @@ en:
   home:
     banner-title: "Don't worry about a thing"
     banner-box1-h: 'Create and send your invoice'
-    banner-box1-p: 'Client and freelancer agree to terms'
+    banner-box1-p: 'Client and freelancer agree to terms through the invoice'
     banner-box2-h: 'Secure the payment'
-    banner-box2-p: 'Start to work when your client has given his credit card details'
-    banner-box3-h: 'Finish your project and get paid immediatly'
+    banner-box2-p: 'Start to work when your client has authorized his credit card details'
+    banner-box3-h: 'Finish your project and get paid'
     banner-box3-p: 'Money gets release has soon as you finish your mission'
     banner-card-title: 'Wait but why?'
     banner-card1-h: 'You said, late?'

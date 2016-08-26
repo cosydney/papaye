@@ -1,3 +1,9 @@
+h1{
+  color: #463b65;
+  font-weight: bold;
+  margin: 40px 0px;
+}
+
 .banner {
   background: center no-repeat;
   background-size: cover !important;
@@ -98,6 +104,7 @@
   height:250px;
   border-radius: 3px;
   box-shadow: 1px 1px 10px lightgrey;
+  margin-top: 40px;
 }
 
 #why-wrapper{
@@ -106,13 +113,33 @@
   box-shadow: 7px 2px 15px lightgray;
 }
 
-#why{
-  color: #463b65;
-  font-weight: bold;
-  margin: 40px 0px;
-}
-
 #stevejobs{
   margin-left: 13px;
 }
+.why-text{
+    padding: 100px;
+    box-shadow: 1px 1px 1px lightgray;
+    background-color: #e0dede;
+}
+.behind-papaye{
+    padding: 20px 70px 70px 70px;
+    box-shadow: 1px 1px 1px lightgray;
+    background-color: #e0dede;
+    height: 600px;
+    img{
+    width: 350px;
+    padding-bottom: 20px;
+    border-radius: 11px;
+    }
+    h3{
+      color: $brand-color;
+    }
+    p{
+      color: $brand-color;
+      opacity: 0.9;
+    }
+}
 
+#steps{
+  color:white;
+}
