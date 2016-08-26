@@ -86,6 +86,7 @@ def pay(params)
     if charge # TODO if charge is successful
       self.transition_to!("paid")
       self.update(payment: charge.to_json)
+      log_activity :paid
       return true
     end
   end

@@ -54,7 +54,7 @@ class InvoicesController < ApplicationController
   # TODO show a specific Invoice. link_to back, edit
   def show
     @invoice = Invoice.find(params[:id])
-    # redirect cleint to own invoice show
+    # redirect client to own invoice show
     redirect_to client_invoice_path(@invoice) and return if current_user.client
 
     #@total = (@invoice.descriptiond.unit  * @invoicce.descriptions.price ) + (@invoice.descriptions.unit * @invoice.descriptions.price * @invoice.descriptions.vat_tax / 100)
@@ -88,11 +88,18 @@ class InvoicesController < ApplicationController
     @client = @invoice.client
     @client.update(client_params)
 
-    if @invoice.update(updated_invoice_params)
-      redirect_to dashboard_path, notice: 'Invoice has been updated.'
+    # if @invoice.update(updated_invoice_params)
+    #   redirect_to dashboard_path, notice: 'Invoice has been updated.'
+    # else
+    #   render :edit
+    # end
+
+    if params[:commit] == "Edit email & Send"
+      redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
     else
-      render :edit
+      redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"
     end
+
   end
 
   # TODO destroy a specific Invoice

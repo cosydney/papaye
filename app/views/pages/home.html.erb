@@ -21,7 +21,7 @@
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin" >
         <div class="card-content">
-          <h1 class="text-center">1</h1>
+          <h1 class="text-center" id="steps">1</h1>
           <h3><%= t('home.banner-box1-h') %></h3>
           <p><%= t('home.banner-box1-p') %></p>
         </div>
@@ -30,7 +30,7 @@
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
         <div class="card-content">
-          <h1 class="text-center">2</h1>
+          <h1 class="text-center" id="steps">2</h1>
           <h3><%= t('home.banner-box2-h') %></h3>
           <p><%= t('home.banner-box2-p') %></p>
         </div>
@@ -39,7 +39,7 @@
     <div class="col-xs-12 col-sm-4">
       <div class="card tree-box-margin">
         <div class="card-content">
-          <h1 class="text-center">3</h1>
+          <h1 class="text-center" id="steps">3</h1>
           <h3><%= t('home.banner-box3-h') %></h3>
           <p><%= t('home.banner-box3-p') %></p>
         </div>
@@ -55,32 +55,76 @@
   <div class="container">
     <div class="col-xs-12 col-md-6">
       <div class="two-box-margin">
-        <h3><%= t('home.banner-card1-h') %></h3>
-        <p><%= t('home.banner-card1-p') %></p>
-      </div></div>
-      <div class="col-xs-12 col-md-6">  <%= image_tag 'late.jpg', class: "home-img" %></div>
-
-    </div>
-    <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <%= image_tag 'onemorething.jpg', id: "stevejobs",class: "home-img" %>
+        <div class="why-text">
+          <h3><%= t('home.banner-card1-h') %></h3>
+          <p><%= t('home.banner-card1-p') %></p>
         </div>
-        <div class="col-xs-12 col-md-6">
-          <div class="two-box-margin">
-            <h3><%= t('home.banner-card2-h') %></h3>
-            <p><%= t('home.banner-card2-p') %></p>
-          </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="text-center">
+       <%= image_tag 'late.jpg', class: "home-img" %>
+     </div>
+   </div>
+
+ </div>
+ <br>
+ <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="text-center">
+        <%= image_tag 'onemorething.jpg', id: "stevejobs",class: "home-img" %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="two-box-margin">
+        <div class="why-text">
+          <h3><%= t('home.banner-card2-h') %></h3>
+          <p><%= t('home.banner-card2-p') %></p>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="card one-box-margin ">
+
+<!-- Who is behing papaye -->
+<div class="container">
+<div class="text-center" id="why">
+        <h1>More about Papaye</h1>
+      </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="behind-papaye">
+        <h1 class="text-center">Pricing</h1>
+        <h3>It's free</h3>
+        <p>Papaye it an online web app entirely free to use :).
+        <br>
+         It's open source and you are welcome to contribute on <a href="https://github.com/cosydney/papaye">Github <i class="fa fa-github" aria-hidden="true"></i></a>.
+</p>
+        <br>
+        <h3>Connect with Stripe</h3>
+        <p>our service allow you to connect with Stripe. Their fee is 1.4% + 0.25€ for european cards and 2.9% + 0.25€ for Non-european.</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="behind-papaye">
+        <h1 class="text-center">The team </h1>
+        <div class="text-center"> <%=  image_tag("team.jpg")  %> </div>
+        <p>Lina, Sydney and Joâo met in Lisbonne in July 2016 at <a href="www.lewagon.org">leWagon</a>, a french coding school bootcamp.
+        <br>
+        All three of them gathered together with the drive to help freelancers stop worrying about their invoices. </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Build trust Call to Action -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card one-box-margin ">
         <div class="card-content">
           <h3 class="text-center"><%= t('home.banner-description-h') %></h3>
           <p><%= t('home.banner-description-p1') %></p>
@@ -88,8 +132,8 @@
           <div class="cta text-center">
            <%= link_to t('home.banner-description-btn'), new_user_registration_path,class: "btn btn-invoice"%>
          </div>
-         </div>
        </div>
      </div>
    </div>
  </div>
+</div>
