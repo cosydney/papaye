@@ -18,6 +18,7 @@ class InvoicesController < ApplicationController
     @invoice.build_client
     @invoice.descriptions.build
     @user = User.new
+    @client = Client.new
   end
 
   def edit_email
@@ -39,15 +40,24 @@ class InvoicesController < ApplicationController
 
   def create
     @client = Client.where(email: client_params[:email]).first
-    @client ||= Client.create!(client_params)
-    update_user_client
+    @client ||= Client.new(client_params)
 
-    @invoice = Invoice.create!(invoice_params.merge(freelancer_id: current_user.freelancer.id, client_id: @client.id))
+    if @client.save
+      update_user_client
 
-    if params[:commit] == "Edit email & Send"
-      redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
+      @invoice = Invoice.create!(invoice_params.merge(freelancer_id: current_user.freelancer.id, client_id: @client.id))
+
+      if params[:commit] == "Edit email & Send"
+        redirect_to edit_email_invoice_path(@invoice), notice: 'Invoice saved'
+      else
+        redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"
+      end
     else
-      redirect_to dashboard_path, notice: "Invoice has been saved waiting to be send"
+      @disable_sidebars = true
+      @invoice = Invoice.new(invoice_params)
+      @invoice.valid?
+      @user = User.new
+      render :new
     end
   end
 
@@ -121,7 +131,7 @@ class InvoicesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
     # to set params, think about nested forms (need description and client attributes!)
-    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, descriptions_attributes: [:project_description, :description, :amount, :unit, :vat_tax, :price, :id, :_destroy])
+    params.require(:invoice).permit(:invoice_date, :due_date, :invoice_nr, :invoice_terms, :project_description, descriptions_attributes: [:description, :amount, :unit, :vat_tax, :price, :id, :_destroy])
   end
 
   def client_params

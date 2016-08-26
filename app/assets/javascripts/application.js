@@ -4,5 +4,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+// require parsley
 //= require cocoon
-//= require_tree .
+//= require "./dashboard"
+//= require "./invoice_form"
+
+// require_tree .

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825143048) do
+ActiveRecord::Schema.define(version: 20160826084116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,9 @@ ActiveRecord::Schema.define(version: 20160825143048) do
     t.string   "unit"
     t.float    "amount"
     t.float    "vat_tax"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "price_cents",         default: 0, null: false
-    t.string   "project_description"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "price_cents", default: 0, null: false
   end
 
   add_index "descriptions", ["invoice_id"], name: "index_descriptions_on_invoice_id", using: :btree
@@ -102,10 +101,11 @@ ActiveRecord::Schema.define(version: 20160825143048) do
     t.date     "due_date"
     t.integer  "invoice_nr"
     t.string   "invoice_terms"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.datetime "email_sent_at"
     t.text     "payment"
+    t.string   "project_description"
   end
 
   add_index "invoices", ["client_id"], name: "index_invoices_on_client_id", using: :btree
