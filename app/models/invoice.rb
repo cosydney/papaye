@@ -14,7 +14,7 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :client
   accepts_nested_attributes_for :descriptions, reject_if: :all_blank
 
-  validates :invoice_nr, presence: true
+  # validates :invoice_nr, presence: true
 
   # This method is called now from the invoice controller with an if statement,
   # id the client is existing, we send it the invoice, else we sent him the invitable
