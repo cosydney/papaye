@@ -40,13 +40,13 @@ en:
     banner-box3-p: 'Money gets release has soon as you finish your mission'
     banner-card-title: 'Wait but why?'
     banner-card1-h: 'You said, late?'
-    banner-card1-p: 'Ever had a client paying late ?... At Invictus we think you should focus on what you do best.'
+    banner-card1-p: 'Ever had a client paying late ?... At Papaye we think you should focus on what you do best.'
     banner-card2-h: 'Just one more thing...'
     banner-card2-p: 'Your project never really finishes and your client has one more thing he would like you to do before he can send the payment?'
     banner-description-h: 'Build trust'
     banner-description-p1: 'Our service allow you to capture your client credit card info'
     banner-description-p2: 'and charge him only when you finish the mission.'
-    banner-description-btn: 'Send your first invoice with Invictus'
+    banner-description-btn: 'Send your first invoice with Papaye'
   invoice:
     index:
       hello: "Hi there"
@@ -60,13 +60,13 @@ en:
       team: 'The Team'
       copy-right: 'Made by Freelancers for Freelancers © 2016 papaye.co'
     welcome-nav:
-      powered: 'Powered by Papaye ©'
+      powered: 'Papaye Beta  ©'
       not-signed: 'Welcome please sign in'
   mailer:
     send-inv:
       subject: "Your invoice from"
       header: 'Dear Mrs. / Ms. '
-      message: 'Like we agreed you will find here a copy of the invoice to be paid.   Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Invictus.'
+      message: 'Like we agreed you will find here a copy of the invoice to be paid.   Click on the button below to be redirected for the payment. This will secure the money until the mission is finished, thanks to Papaye.'
       goodbye: 'I look forward to start the mission,'
       copy-r: 'Copyright © 2016 Papaye, All rights reserved.'
       made: 'Made by Papaye with <3'

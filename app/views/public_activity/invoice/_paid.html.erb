@@ -1,0 +1,10 @@
+<% label = "Invoice for company " + activity.parameters[:company] + " and client " + activity.parameters[:client_name] + " " + activity.parameters[:client_last_name] + " has been paid " %>
+
+<li>
+ <i class="fa fa-credit-card" id="paid-icon" aria-hidden="true"></i>
+<% if activity.trackable %>
+<%= link_to label, invoice_path(activity.trackable) %>
+<% else %>
+<%= label %>
+<% end %>
+ <div class="timestamp pull-right"> <%= time_ago_in_words(activity.created_at)%> ago </div></li>
