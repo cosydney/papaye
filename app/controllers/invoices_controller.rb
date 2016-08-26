@@ -57,10 +57,13 @@ class InvoicesController < ApplicationController
     # redirect client to own invoice show
     redirect_to client_invoice_path(@invoice) and return if current_user.client
 
+    #@total = (@invoice.descriptiond.unit  * @invoicce.descriptions.price ) + (@invoice.descriptions.unit * @invoice.descriptions.price * @invoice.descriptions.vat_tax / 100)
+
+    # Create PDF
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "invoice #{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
+        render pdf: "invoice_#{@invoice.invoice_nr}"   # Excluding ".pdf" extension.
       end
     end
 

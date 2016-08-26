@@ -30,3 +30,7 @@
 <%= render 'invoices/invoice_show' %>
 
 
+<h1 class="btn btn-invoice">  <%= link_to 'Download PDF', client_invoice_path(@invoice, :format => :pdf), :target => '_blank' %></h1>
+<h1 class="btn btn-invoice">  <%= link_to 'go back to dashboard', client_invoices_path %></h1>
+
+
