@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   resource :client, only: [:show, :edit, :update, :destroy]
 
   namespace :client do
-    resources :invoices, only: [:index, :show, :create]
+    resources :invoices, only: [:index, :show, :create] do
+      # -------------- STRIPE ----------------
+      resource :payment, only: [:create, :new]
+    end
   end
 
   resources :invoices do
@@ -37,6 +40,8 @@ Rails.application.routes.draw do
     end
   end
   resources :pages
+
+
 
   # sidekiq so we authenticate users for them to be in the admin
   authenticate :user, lambda { |u| u.admin  } do

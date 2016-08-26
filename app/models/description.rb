@@ -3,7 +3,4 @@ class Description < ActiveRecord::Base
   monetize :price_cents
 
   validates :description, presence: true
-
-  # THIS IS WRONG, JUST A TEST!!!!
-  # VALIDATIONS
 end
