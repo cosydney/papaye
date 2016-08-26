@@ -28,7 +28,14 @@
           <h4>INVOICE TO</h4>
         </div>
         <div class="col-xs-12 col-md-4">
-          <h4> $ TOTAL </h4>
+          <h4>
+
+          <% total = [] %>
+          <%  @invoice.descriptions.all.each do |d| total << d.price_cents end %>
+          <%   total.inject(0){|sum, x| sum + x } %>
+          <%=  total %>
+            TOTAL </h4>
+          }
         </div>
       </div>
     </div><!-- hidden-xs col-sm-12 -->
